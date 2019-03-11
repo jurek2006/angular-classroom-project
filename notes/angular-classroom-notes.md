@@ -14,7 +14,7 @@ Bez wymyślnego stylowania - użycie Bootstrap 4. (później)
 
 ### Używane:
 
-angular, eslint, prettier
+angular, eslint, prettier, uuid
 
 
 
@@ -25,4 +25,3 @@ angular, eslint, prettier
 Wyczyszczenie projektu z zawartości początkowej
 
 ## Dodanie podstawowego modelu dla kontaktu
-
