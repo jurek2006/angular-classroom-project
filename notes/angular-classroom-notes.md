@@ -25,3 +25,8 @@ angular, eslint, prettier, uuid
 Wyczyszczenie projektu z zawartości początkowej
 
 ## Dodanie podstawowego modelu dla kontaktu
+
+## Wyświetlanie listy kontaktów i wybór kontaktu do wyświetlenia
+
+Dodanie serwisu contacts i przeniesienie do niego listy kontaktów. Dodanie do serwisu metody pobierania wszystkich kontaktów oraz pojedynczego na podstawie id.
+
