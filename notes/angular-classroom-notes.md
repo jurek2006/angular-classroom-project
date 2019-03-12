@@ -30,3 +30,11 @@ Wyczyszczenie projektu z zawartości początkowej
 
 Dodanie serwisu contacts i przeniesienie do niego listy kontaktów. Dodanie do serwisu metody pobierania wszystkich kontaktów oraz pojedynczego na podstawie id.
 
+## Formularz dodawania nowego kontaktu
+
+Dodanie komponentu contact-edit z formularzem.
+
+"Powiadomianie" komponentu contact-edit, że zmieniła się lista kontaktów.
+
+Dodać formularz
+
