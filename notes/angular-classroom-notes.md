@@ -73,3 +73,5 @@ Oraz przycisków w headerze do przełączania się pomiędzy kursami a kontaktam
 Dodanie modelu course. Dodanie serwisu courses.
 
 ## Obsługa kursu, gdy nie ma o takim id
+
+## Dodawanie nowego kursu

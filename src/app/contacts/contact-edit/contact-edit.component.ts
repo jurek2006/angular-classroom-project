@@ -10,16 +10,16 @@ import { Router, ActivatedRoute } from "@angular/router";
   styleUrls: ["./contact-edit.component.css"]
 })
 export class ContactEditComponent implements OnInit {
+  contactForm: FormGroup;
+  editMode = false; // if true we're editing existing contact, otherwise creating new one
+  deleteMode = false;
+  contactToEdit: Contact;
+
   constructor(
     private contactsService: ContactsService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
-
-  contactForm: FormGroup;
-  editMode = false; // if true we're editing existing contact, otherwise creating new one
-  deleteMode = false;
-  contactToEdit: Contact;
 
   ngOnInit() {
     const contactId = this.route.snapshot.params.id;

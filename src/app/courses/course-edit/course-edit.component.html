@@ -1,3 +1,27 @@
-<p>
-  course-edit works!
-</p>
+<form *ngIf="!deleteMode" [formGroup]="courseForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="shortCourseName">Short course name:</label>
+    <input
+      type="text"
+      name="shortCourseName"
+      id="shortCourseName"
+      formControlName="shortCourseName"
+    />
+  </div>
+  <div>
+    <label for="fullCourseName">Full name:</label>
+    <input
+      type="text"
+      name="fullCourseName"
+      id="fullCourseName"
+      formControlName="fullCourseName"
+    />
+  </div>
+  <div class="">
+    <button [disabled]="!courseForm.valid">Save course</button>
+  </div>
+  <div class="">
+    <button type="button" (click)="onCancel()">Cancel</button>
+    <!-- <button type="button" (click)="onDeleteContact()">Delete</button> -->
+  </div>
+</form>
