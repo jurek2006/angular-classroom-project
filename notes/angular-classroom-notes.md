@@ -63,3 +63,7 @@ Dodanie osobnego komponentu dla contact not found
 # Realizacja - etap II
 
 ## Dodanie komponentów courses, courses-list, header
+
+## Dodanie route dla listy kursów
+
+Oraz przycisków w headerze do przełączania się pomiędzy kursami a kontaktami

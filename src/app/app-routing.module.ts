@@ -4,11 +4,14 @@ import { ContactsComponent } from "./contacts/contacts.component";
 import { ContactDetailComponent } from "./contacts/contact-detail/contact-detail.component";
 import { ContactEditComponent } from "./contacts/contact-edit/contact-edit.component";
 import { ContactNotFoundComponent } from "./contacts/contact-not-found/contact-not-found.component";
+import { CoursesComponent } from "./courses/courses.component";
+import { IndexComponent } from "./index/index.component";
 
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "/contacts",
+    // redirectTo: "/contacts",
+    component: IndexComponent,
     pathMatch: "full"
   },
   {
@@ -20,6 +23,16 @@ const routes: Routes = [
       { path: ":id/edit", component: ContactEditComponent },
       { path: ":id", component: ContactDetailComponent }
     ]
+  },
+  {
+    path: "courses",
+    component: CoursesComponent
+    // children: [
+    //   { path: "new", component: ContactEditComponent },
+    //   { path: ":id/notFound", component: ContactNotFoundComponent },
+    //   { path: ":id/edit", component: ContactEditComponent },
+    //   { path: ":id", component: ContactDetailComponent }
+    // ]
   }
 ];
 

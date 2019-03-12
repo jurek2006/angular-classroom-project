@@ -14,6 +14,7 @@ import { ContactDeleteComponent } from './contacts/contact-delete/contact-delete
 import { CoursesComponent } from './courses/courses.component';
 import { CoursesListComponent } from './courses/courses-list/courses-list.component';
 import { HeaderComponent } from './header/header.component';
+import { IndexComponent } from './index/index.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { HeaderComponent } from './header/header.component';
     ContactDeleteComponent,
     CoursesComponent,
     CoursesListComponent,
-    HeaderComponent
+    HeaderComponent,
+    IndexComponent
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
