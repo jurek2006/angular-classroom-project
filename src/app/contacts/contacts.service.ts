@@ -20,11 +20,10 @@ export class ContactsService {
   }
 
   public getContactById(id: string): Contact {
-    return JSON.parse(
-      JSON.stringify(
-        this.contacts.find((contact: Contact) => contact.id === id)
-      )
+    const foundContact = this.contacts.find(
+      (contact: Contact) => contact.id === id
     );
+    return foundContact ? JSON.parse(JSON.stringify(foundContact)) : null;
   }
 
   public addContact(firstName: string, lastName: string) {

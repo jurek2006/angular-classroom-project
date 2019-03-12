@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ContactsService } from "../contacts.service";
 import { Contact } from "src/app/shared/contact.model";
-import { ActivatedRoute, Params } from "@angular/router";
+import { ActivatedRoute, Params, Router } from "@angular/router";
 
 @Component({
   selector: "app-contact-detail",
@@ -9,11 +9,12 @@ import { ActivatedRoute, Params } from "@angular/router";
   styleUrls: ["./contact-detail.component.css"]
 })
 export class ContactDetailComponent implements OnInit {
-  contact: Contact;
-  id: string;
+  private contact: Contact;
+  private id: string;
 
   constructor(
     private contactsService: ContactsService,
+    private router: Router,
     private route: ActivatedRoute
   ) {}
 
@@ -21,6 +22,11 @@ export class ContactDetailComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       this.id = params.id;
       this.contact = this.contactsService.getContactById(this.id);
+      if (!this.contact) {
+        this.router.navigate(["notFound"], {
+          relativeTo: this.route
+        });
+      }
     });
   }
 }

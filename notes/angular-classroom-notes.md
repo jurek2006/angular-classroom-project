@@ -43,3 +43,5 @@ Dodać formularz
 ## Formularz edycji istniejącego kontaktu
 
 ## Poprawna obsługa, gdy nie ma kontaktu o zadanym id
+
+Dodanie osobnego komponentu dla contact not found

@@ -23,9 +23,14 @@ export class ContactEditComponent implements OnInit {
   ngOnInit() {
     const contactId = this.route.snapshot.params.id;
     if (contactId) {
-      // if id passed in path we set editMode and get editing contact's data
-      this.editMode = true;
       this.contactToEdit = this.contactsService.getContactById(contactId);
+      if (this.contactToEdit) {
+        // if id passed in path and there's existing contact with this id - set to editMode
+        this.editMode = true;
+      } else {
+        // if id passed but there's is no contact with this id - walk away to notFound component
+        this.router.navigate(["..", "notFound"], { relativeTo: this.route });
+      }
     }
     this.initForm();
   }
