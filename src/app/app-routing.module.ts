@@ -15,6 +15,7 @@ const routes: Routes = [
     component: ContactsComponent,
     children: [
       { path: "new", component: ContactEditComponent },
+      { path: ":id/edit", component: ContactEditComponent },
       { path: ":id", component: ContactDetailComponent }
     ]
   }

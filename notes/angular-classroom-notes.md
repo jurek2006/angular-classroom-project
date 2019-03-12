@@ -39,3 +39,7 @@ Dodanie komponentu contact-edit z formularzem.
 Dodać formularz
 
 ## Walidatory do formularza dodawania nowego kontaktu
+
+## Formularz edycji istniejącego kontaktu
+
+## Poprawna obsługa, gdy nie ma kontaktu o zadanym id

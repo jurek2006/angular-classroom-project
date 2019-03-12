@@ -31,4 +31,15 @@ export class ContactsService {
     this.contacts = [...this.contacts, new Contact(null, firstName, lastName)];
     this.contactsChanged.next(this.getContacts());
   }
+
+  public editContact(id: string, newFirstName: string, newLastName: string) {
+    this.contacts = this.contacts.map(
+      (contact: Contact): Contact => {
+        return contact.id === id
+          ? new Contact(id, newFirstName, newLastName)
+          : contact;
+      }
+    );
+    this.contactsChanged.next(this.getContacts());
+  }
 }
