@@ -45,3 +45,5 @@ Dodać formularz
 ## Poprawna obsługa, gdy nie ma kontaktu o zadanym id
 
 Dodanie osobnego komponentu dla contact not found
+
+## Usuwanie kontaktu

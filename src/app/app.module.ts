@@ -10,6 +10,7 @@ import { ContactsListItemComponent } from "./contacts/contacts-list/contacts-lis
 import { ContactDetailComponent } from "./contacts/contact-detail/contact-detail.component";
 import { ContactEditComponent } from "./contacts/contact-edit/contact-edit.component";
 import { ContactNotFoundComponent } from './contacts/contact-not-found/contact-not-found.component';
+import { ContactDeleteComponent } from './contacts/contact-delete/contact-delete.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ContactNotFoundComponent } from './contacts/contact-not-found/contact-n
     ContactsListItemComponent,
     ContactDetailComponent,
     ContactEditComponent,
-    ContactNotFoundComponent
+    ContactNotFoundComponent,
+    ContactDeleteComponent
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],

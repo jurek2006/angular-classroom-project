@@ -18,6 +18,7 @@ export class ContactEditComponent implements OnInit {
 
   contactForm: FormGroup;
   editMode = false; // if true we're editing existing contact, otherwise creating new one
+  deleteMode = false;
   contactToEdit: Contact;
 
   ngOnInit() {
@@ -67,5 +68,9 @@ export class ContactEditComponent implements OnInit {
   onCancel() {
     this.editMode = false;
     this.router.navigate([".."], { relativeTo: this.route });
+  }
+
+  onDeleteContact() {
+    this.deleteMode = true;
   }
 }

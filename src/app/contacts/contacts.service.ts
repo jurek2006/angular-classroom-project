@@ -41,4 +41,12 @@ export class ContactsService {
     );
     this.contactsChanged.next(this.getContacts());
   }
+
+  public deleteContactById(id: string): boolean {
+    this.contacts = this.contacts.filter((contact: Contact) => {
+      return contact.id !== id;
+    });
+    this.contactsChanged.next(this.getContacts());
+    return true;
+  }
 }
