@@ -6,6 +6,7 @@ import { ContactEditComponent } from "./contacts/contact-edit/contact-edit.compo
 import { ContactNotFoundComponent } from "./contacts/contact-not-found/contact-not-found.component";
 import { CoursesComponent } from "./courses/courses.component";
 import { IndexComponent } from "./index/index.component";
+import { CourseDetailComponent } from "./courses/course-detail/course-detail.component";
 
 const routes: Routes = [
   {
@@ -26,13 +27,13 @@ const routes: Routes = [
   },
   {
     path: "courses",
-    component: CoursesComponent
-    // children: [
-    //   { path: "new", component: ContactEditComponent },
-    //   { path: ":id/notFound", component: ContactNotFoundComponent },
-    //   { path: ":id/edit", component: ContactEditComponent },
-    //   { path: ":id", component: ContactDetailComponent }
-    // ]
+    component: CoursesComponent,
+    children: [
+      //   { path: "new", component: ContactEditComponent },
+      //   { path: ":id/notFound", component: ContactNotFoundComponent },
+      //   { path: ":id/edit", component: ContactEditComponent },
+      { path: ":id", component: CourseDetailComponent }
+    ]
   }
 ];
 

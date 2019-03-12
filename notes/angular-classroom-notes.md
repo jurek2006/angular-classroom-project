@@ -67,3 +67,7 @@ Dodanie osobnego komponentu dla contact not found
 ## Dodanie route dla listy kursów
 
 Oraz przycisków w headerze do przełączania się pomiędzy kursami a kontaktami
+
+## Wyświetlanie listy kursów
+
+Dodanie modelu course. Dodanie serwisu courses.

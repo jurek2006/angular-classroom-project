@@ -1,3 +1,8 @@
-<p>
-  courses-list works!
-</p>
+<a [routerLink]="['new']" routerLinkActive="active">New course</a>
+
+<ul>
+  <app-courses-list-item
+    *ngFor="let course of courses"
+    [course]="course"
+  ></app-courses-list-item>
+</ul>
