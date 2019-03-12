@@ -7,6 +7,7 @@ import { ContactNotFoundComponent } from "./contacts/contact-not-found/contact-n
 import { CoursesComponent } from "./courses/courses.component";
 import { IndexComponent } from "./index/index.component";
 import { CourseDetailComponent } from "./courses/course-detail/course-detail.component";
+import { CourseNotFoundComponent } from "./courses/course-not-found/course-not-found.component";
 
 const routes: Routes = [
   {
@@ -30,7 +31,7 @@ const routes: Routes = [
     component: CoursesComponent,
     children: [
       //   { path: "new", component: ContactEditComponent },
-      //   { path: ":id/notFound", component: ContactNotFoundComponent },
+      { path: ":id/notFound", component: CourseNotFoundComponent },
       //   { path: ":id/edit", component: ContactEditComponent },
       { path: ":id", component: CourseDetailComponent }
     ]
