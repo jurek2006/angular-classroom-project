@@ -38,3 +38,4 @@ Dodanie komponentu contact-edit z formularzem.
 
 Dodać formularz
 
+## Walidatory do formularza dodawania nowego kontaktu

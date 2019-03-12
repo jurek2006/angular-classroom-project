@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ContactsService } from "../contacts.service";
 import { Contact } from "src/app/shared/contact.model";
-import { FormGroup, FormControl } from "@angular/forms";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
@@ -24,8 +24,8 @@ export class ContactEditComponent implements OnInit {
 
   private initForm() {
     this.contactForm = new FormGroup({
-      firstName: new FormControl(),
-      lastName: new FormControl()
+      firstName: new FormControl(null, Validators.required),
+      lastName: new FormControl(null, Validators.required)
     });
   }
 

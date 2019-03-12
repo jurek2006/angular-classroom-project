@@ -18,7 +18,7 @@
     />
   </div>
   <div class="">
-    <button>Save contact</button>
+    <button [disabled]="!contactForm.valid">Save contact</button>
   </div>
   <div class="">
     <button type="button" (click)="onCancel()">Cancel</button>

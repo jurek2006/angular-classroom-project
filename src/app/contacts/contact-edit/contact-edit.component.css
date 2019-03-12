@@ -1,0 +1,6 @@
+input:focus {
+}
+
+input.ng-invalid.ng-touched {
+  background-color: lightpink;
+}
