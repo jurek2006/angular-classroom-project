@@ -11,6 +11,9 @@ import { ContactDetailComponent } from "./contacts/contact-detail/contact-detail
 import { ContactEditComponent } from "./contacts/contact-edit/contact-edit.component";
 import { ContactNotFoundComponent } from './contacts/contact-not-found/contact-not-found.component';
 import { ContactDeleteComponent } from './contacts/contact-delete/contact-delete.component';
+import { CoursesComponent } from './courses/courses.component';
+import { CoursesListComponent } from './courses/courses-list/courses-list.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,10 @@ import { ContactDeleteComponent } from './contacts/contact-delete/contact-delete
     ContactDetailComponent,
     ContactEditComponent,
     ContactNotFoundComponent,
-    ContactDeleteComponent
+    ContactDeleteComponent,
+    CoursesComponent,
+    CoursesListComponent,
+    HeaderComponent
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],

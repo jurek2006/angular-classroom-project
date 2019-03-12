@@ -12,6 +12,18 @@ Przechowywanie danych - kontaktów o osobach (mogą to być później uczestnicy
 
 Bez wymyślnego stylowania - użycie Bootstrap 4. (później)
 
+## Etap II
+
+Przechowywanie danych o kursach
+
+- wyświetlanie listy wszystkich kursów
+- wyświetlanie szczegółów kursu
+- dodawanie kursu
+- edycja kursu
+- usuwanie kursu
+- możliwość przypisywania uczestników
+- możliwość przypisywania prowadzących
+
 ### Używane:
 
 angular, eslint, prettier, uuid
@@ -47,3 +59,7 @@ Dodać formularz
 Dodanie osobnego komponentu dla contact not found
 
 ## Usuwanie kontaktu
+
+# Realizacja - etap II
+
+## Dodanie komponentów courses, courses-list, header
