@@ -28,25 +28,23 @@ export class CourseDetailComponent implements OnInit {
       this.id = params.id;
       this.course = this.coursesService.getCourseById(this.id);
 
-      if (this.course && this.course.teachersIds) {
-        this.teachers = this.course.teachersIds.map(teacherId => {
-          return this.contactsService.getContactById(teacherId);
-        });
-      } else {
-        this.teachers = [];
-      }
-      if (this.course && this.course.studentIds) {
-        this.students = this.course.studentIds.map(studentId => {
-          return this.contactsService.getContactById(studentId);
-        });
-      } else {
-        this.students = [];
-      }
       if (!this.course) {
-        this.router.navigate(["notFound"], {
+        return this.router.navigate(["notFound"], {
           relativeTo: this.route
         });
       }
+
+      this.teachers = this.course.teachersIds
+        ? this.course.teachersIds.map(teacherId => {
+            return this.contactsService.getContactById(teacherId);
+          })
+        : [];
+
+      this.students = this.course.studentsIds
+        ? this.course.studentsIds.map(studentId => {
+            return this.contactsService.getContactById(studentId);
+          })
+        : [];
     });
   }
 }
