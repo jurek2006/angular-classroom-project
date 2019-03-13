@@ -7,6 +7,7 @@ import { Subject } from "rxjs";
 })
 export class CoursesService {
   public coursesChanged = new Subject<Course[]>();
+  public courseChanged = new Subject<Course>();
 
   private courses: Course[] = [
     new Course(
@@ -19,8 +20,8 @@ export class CoursesService {
         "0a8d68a0-1479-4121-8b5e-cf75d3e87c0c"
       ]
     ),
-    new Course(null, "Espanol", "Espanol para ninos", null, null),
-    new Course(null, "Deutsch", "Deutch DE", null, null)
+    new Course(null, "Espanol", "Espanol para ninos"),
+    new Course(null, "Deutsch", "Deutch DE")
   ];
 
   constructor() {}
@@ -50,7 +51,13 @@ export class CoursesService {
     this.courses = this.courses.map(
       (course: Course): Course => {
         return course.id === id
-          ? new Course(id, newShortCourseName, newFullCourseName, null, null)
+          ? new Course(
+              id,
+              newShortCourseName,
+              newFullCourseName,
+              course.teachersIds,
+              course.studentsIds
+            )
           : course;
       }
     );
@@ -63,5 +70,24 @@ export class CoursesService {
     });
     this.coursesChanged.next(this.getCourses());
     return true;
+  }
+
+  public signInContactToCourse(
+    courseId: string,
+    contactId: string,
+    contactType: string
+  ) {
+    const foundCourse = this.courses.find(
+      (course: Course) => course.id === courseId
+    );
+    if (contactType === "student") {
+      console.log(`Dopisz ucznia ${contactId} do kursu ${courseId}`);
+      foundCourse.studentsIds = [...foundCourse.studentsIds, contactId];
+    } else if (contactType === "teacher") {
+      console.log(`Dopisz nauczuciela ${contactId} do kursu ${courseId}`);
+      foundCourse.teachersIds = [...foundCourse.teachersIds, contactId];
+    }
+    console.log(this.courses);
+    this.courseChanged.next(this.getCourseById(courseId));
   }
 }

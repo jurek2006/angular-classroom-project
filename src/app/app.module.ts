@@ -21,6 +21,8 @@ import { CourseNotFoundComponent } from "./courses/course-not-found/course-not-f
 import { CourseDetailComponent } from "./courses/course-detail/course-detail.component";
 import { CourseDeleteComponent } from "./courses/course-edit/course-delete/course-delete.component";
 import { CourseContactsComponent } from './courses/course-detail/course-contacts/course-contacts.component';
+import { TestComponent } from './test/test.component';
+import { CourseSigninComponent } from './courses/course-detail/course-signin/course-signin.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { CourseContactsComponent } from './courses/course-detail/course-contacts
     CourseNotFoundComponent,
     CourseDetailComponent,
     CourseDeleteComponent,
-    CourseContactsComponent
+    CourseContactsComponent,
+    TestComponent,
+    CourseSigninComponent
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],

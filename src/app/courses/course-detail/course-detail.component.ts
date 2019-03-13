@@ -4,6 +4,7 @@ import { CoursesService } from "../courses.service";
 import { Course } from "src/app/shared/courses.model";
 import { Contact } from "src/app/shared/contact.model";
 import { ContactsService } from "src/app/contacts/contacts.service";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-course-detail",
@@ -15,6 +16,7 @@ export class CourseDetailComponent implements OnInit {
   private teachers: Contact[];
   private students: Contact[];
   private id: string;
+  private subscription: Subscription;
 
   constructor(
     private coursesService: CoursesService,
@@ -46,5 +48,24 @@ export class CourseDetailComponent implements OnInit {
           })
         : [];
     });
+
+    this.subscription = this.coursesService.courseChanged.subscribe(
+      (course: Course) => {
+        console.log("la la la");
+        this.course = this.coursesService.getCourseById(this.id);
+
+        this.teachers = this.course.teachersIds
+          ? this.course.teachersIds.map(teacherId => {
+              return this.contactsService.getContactById(teacherId);
+            })
+          : [];
+
+        this.students = this.course.studentsIds
+          ? this.course.studentsIds.map(studentId => {
+              return this.contactsService.getContactById(studentId);
+            })
+          : [];
+      }
+    );
   }
 }

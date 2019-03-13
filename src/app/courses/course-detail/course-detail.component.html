@@ -3,11 +3,15 @@
   <a [routerLink]="['edit']">Edit course</a>
 
   <app-course-contacts
+    type="teacher"
     title="Teachers:"
     [contacts]="teachers"
   ></app-course-contacts>
   <app-course-contacts
+    type="student"
     title="Students:"
     [contacts]="students"
   ></app-course-contacts>
 </div>
+
+<router-outlet></router-outlet>

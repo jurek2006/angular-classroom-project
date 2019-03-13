@@ -7,6 +7,7 @@ import { Contact } from "src/app/shared/contact.model";
   styleUrls: ["./course-contacts.component.css"]
 })
 export class CourseContactsComponent implements OnInit {
+  @Input() type: string;
   @Input() title: string;
   @Input() contacts: Contact[];
 

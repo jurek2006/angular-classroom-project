@@ -9,6 +9,9 @@ import { IndexComponent } from "./index/index.component";
 import { CourseDetailComponent } from "./courses/course-detail/course-detail.component";
 import { CourseNotFoundComponent } from "./courses/course-not-found/course-not-found.component";
 import { CourseEditComponent } from "./courses/course-edit/course-edit.component";
+import { TestComponent } from "./test/test.component";
+import { ContactsListComponent } from "./contacts/contacts-list/contacts-list.component";
+import { CourseSigninComponent } from "./courses/course-detail/course-signin/course-signin.component";
 
 const routes: Routes = [
   {
@@ -34,13 +37,22 @@ const routes: Routes = [
       { path: "new", component: CourseEditComponent },
       { path: ":id/notFound", component: CourseNotFoundComponent },
       { path: ":id/edit", component: CourseEditComponent },
-      { path: ":id", component: CourseDetailComponent }
+      {
+        path: ":id",
+        component: CourseDetailComponent,
+        children: [
+          { path: "signin/:type", component: ContactsListComponent },
+          { path: "signin/:type/:contactId", component: CourseSigninComponent }
+        ]
+      }
     ]
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, { paramsInheritanceStrategy: "always" })
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

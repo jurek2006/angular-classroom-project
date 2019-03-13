@@ -1,4 +1,5 @@
 <h3>{{ title }}</h3>
+<a [routerLink]="['signin', type]">Sign in</a>
 <ul>
   <li *ngFor="let contact of contacts">
     <a [routerLink]="'/contacts/' + contact.id"

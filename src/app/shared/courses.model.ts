@@ -5,8 +5,8 @@ export class Course {
     public id: string,
     public shortCourseName: string,
     public fullCourseName: string,
-    public teachersIds: string[],
-    public studentsIds: string[]
+    public teachersIds: string[] = [],
+    public studentsIds: string[] = []
   ) {
     this.id = this.id || uuid();
   }
