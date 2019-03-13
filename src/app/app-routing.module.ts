@@ -33,7 +33,7 @@ const routes: Routes = [
     children: [
       { path: "new", component: CourseEditComponent },
       { path: ":id/notFound", component: CourseNotFoundComponent },
-      //   { path: ":id/edit", component: ContactEditComponent },
+      { path: ":id/edit", component: CourseEditComponent },
       { path: ":id", component: CourseDetailComponent }
     ]
   }

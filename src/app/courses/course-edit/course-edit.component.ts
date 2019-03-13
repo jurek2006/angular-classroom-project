@@ -23,6 +23,7 @@ export class CourseEditComponent implements OnInit {
 
   ngOnInit() {
     const courseId = this.route.snapshot.params.id;
+    console.log(courseId);
     if (courseId) {
       this.courseToEdit = this.coursesService.getCourseById(courseId);
       if (this.courseToEdit) {
@@ -51,11 +52,11 @@ export class CourseEditComponent implements OnInit {
 
   onSubmit() {
     if (this.editMode) {
-      // this.coursesService.(
-      //   this.contactToEdit.id,
-      //   this.courseForm.value.firstName,
-      //   this.courseForm.value.lastName
-      // );
+      this.coursesService.editCourse(
+        this.courseToEdit.id,
+        this.courseForm.value.shortCourseName,
+        this.courseForm.value.fullCourseName
+      );
     } else {
       this.coursesService.addCourse(
         this.courseForm.value.shortCourseName,

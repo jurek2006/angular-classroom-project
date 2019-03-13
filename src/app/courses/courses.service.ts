@@ -32,4 +32,19 @@ export class CoursesService {
     ];
     this.coursesChanged.next(this.getCourses());
   }
+
+  public editCourse(
+    id: string,
+    newShortCourseName: string,
+    newFullCourseName: string
+  ) {
+    this.courses = this.courses.map(
+      (course: Course): Course => {
+        return course.id === id
+          ? new Course(id, newShortCourseName, newFullCourseName, null, null)
+          : course;
+      }
+    );
+    this.coursesChanged.next(this.getCourses());
+  }
 }

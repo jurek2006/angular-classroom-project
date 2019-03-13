@@ -75,3 +75,5 @@ Dodanie modelu course. Dodanie serwisu courses.
 ## Obsługa kursu, gdy nie ma o takim id
 
 ## Dodawanie nowego kursu
+
+## Edycja istniejącego kursu
