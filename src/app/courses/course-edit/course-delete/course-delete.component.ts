@@ -1,19 +1,19 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
-import { Contact } from "src/app/shared/contact.model";
-import { ContactsService } from "../contacts.service";
+import { Course } from "src/app/shared/courses.model";
+import { CoursesService } from "../../courses.service";
 
 @Component({
-  selector: "app-contact-delete",
-  templateUrl: "./contact-delete.component.html",
-  styleUrls: ["./contact-delete.component.css"]
+  selector: "app-course-delete",
+  templateUrl: "./course-delete.component.html",
+  styleUrls: ["./course-delete.component.css"]
 })
-export class ContactDeleteComponent implements OnInit {
-  @Input() contact: Contact;
+export class CourseDeleteComponent implements OnInit {
+  @Input() course: Course;
   @Output() cancelDelete = new EventEmitter();
 
   constructor(
-    private contactsService: ContactsService,
+    private coursesService: CoursesService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
@@ -21,7 +21,7 @@ export class ContactDeleteComponent implements OnInit {
   ngOnInit() {}
 
   onConfirmDelete() {
-    this.contactsService.deleteContactById(this.contact.id);
+    this.coursesService.deleteCourseById(this.course.id);
     this.router.navigate(["../.."], { relativeTo: this.route });
   }
 

@@ -70,4 +70,8 @@ export class CourseEditComponent implements OnInit {
     this.editMode = false;
     this.router.navigate([".."], { relativeTo: this.route });
   }
+
+  onDeleteCourse() {
+    this.deleteMode = true;
+  }
 }

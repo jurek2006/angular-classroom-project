@@ -77,3 +77,5 @@ Dodanie modelu course. Dodanie serwisu courses.
 ## Dodawanie nowego kursu
 
 ## Edycja istniejącego kursu
+
+## Usuwanie kursu

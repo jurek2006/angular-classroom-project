@@ -1,5 +1,7 @@
 <p>
-  Do you really want to delete the contact?
+  Do you really want to <span class="highlight">delete</span> the contact
+  <span class="highlight">{{ contact.firstName }} {{ contact.lastName }}</span
+  >?
 </p>
 <button (click)="onConfirmDelete()">Yes, delete it</button>
 <button (click)="onCancel()">No</button>

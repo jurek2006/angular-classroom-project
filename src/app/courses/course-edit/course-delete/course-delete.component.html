@@ -1,0 +1,8 @@
+<p>
+  Do you really want to <span class="highlight">delete</span> the course
+  <span class="highlight">{{ course.shortCourseName }} </span> ({{
+    course.fullCourseName
+  }})?
+</p>
+<button (click)="onConfirmDelete()">Yes, delete it</button>
+<button (click)="onCancel()">No</button>

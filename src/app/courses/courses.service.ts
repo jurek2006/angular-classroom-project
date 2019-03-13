@@ -47,4 +47,12 @@ export class CoursesService {
     );
     this.coursesChanged.next(this.getCourses());
   }
+
+  public deleteCourseById(id: string): boolean {
+    this.courses = this.courses.filter((course: Course) => {
+      return course.id !== id;
+    });
+    this.coursesChanged.next(this.getCourses());
+    return true;
+  }
 }

@@ -19,6 +19,7 @@ import { CoursesListItemComponent } from "./courses/courses-list/courses-list-it
 import { CourseEditComponent } from './courses/course-edit/course-edit.component';
 import { CourseNotFoundComponent } from './courses/course-not-found/course-not-found.component';
 import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
+import { CourseDeleteComponent } from './courses/course-edit/course-delete/course-delete.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { CourseDetailComponent } from './courses/course-detail/course-detail.com
     CoursesListItemComponent,
     CourseEditComponent,
     CourseNotFoundComponent,
-    CourseDetailComponent
+    CourseDetailComponent,
+    CourseDeleteComponent
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
