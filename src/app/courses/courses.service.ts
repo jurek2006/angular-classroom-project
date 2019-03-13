@@ -9,7 +9,16 @@ export class CoursesService {
   public coursesChanged = new Subject<Course[]>();
 
   private courses: Course[] = [
-    new Course(null, "English", "English for adults", null, null),
+    new Course(
+      null,
+      "English",
+      "English for adults",
+      ["2648eee6-2f9e-454a-934a-96fa5e3487be"],
+      [
+        "6f71d945-9518-4028-b27d-3f27efce1f87",
+        "0a8d68a0-1479-4121-8b5e-cf75d3e87c0c"
+      ]
+    ),
     new Course(null, "Espanol", "Espanol para ninos", null, null),
     new Course(null, "Deutsch", "Deutch DE", null, null)
   ];

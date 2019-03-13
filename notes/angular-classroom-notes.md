@@ -79,3 +79,9 @@ Dodanie modelu course. Dodanie serwisu courses.
 ## Edycja istniejącego kursu
 
 ## Usuwanie kursu
+
+## Wyświetlanie listy przypisanych uczniów
+
+Wyświetlanie uczniów nie jako id tylko ich imiona i nazwiska.
+
+Uaktualnienie nauczycieli i uczniów przy zmianie wybranego kursu.

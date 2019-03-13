@@ -1,4 +1,13 @@
 <div *ngIf="course">
-  <p>{{ course.shortCourseName }} ({{ course.fullCourseName }})</p>
-  <a [routerLink]="['edit']">Edit</a>
+  <h2>{{ course.shortCourseName }} ({{ course.fullCourseName }})</h2>
+  <a [routerLink]="['edit']">Edit course</a>
+
+  <app-course-contacts
+    title="Teachers:"
+    [contacts]="teachers"
+  ></app-course-contacts>
+  <app-course-contacts
+    title="Students:"
+    [contacts]="students"
+  ></app-course-contacts>
 </div>
