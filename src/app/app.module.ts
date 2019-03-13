@@ -10,16 +10,16 @@ import { ContactsListItemComponent } from "./contacts/contacts-list/contacts-lis
 import { ContactDetailComponent } from "./contacts/contact-detail/contact-detail.component";
 import { ContactEditComponent } from "./contacts/contact-edit/contact-edit.component";
 import { ContactNotFoundComponent } from "./contacts/contact-not-found/contact-not-found.component";
-import { ContactDeleteComponent } from "./contacts/contact-delete/contact-delete.component";
+import { ContactDeleteComponent } from "./contacts/contact-edit/contact-delete/contact-delete.component";
 import { CoursesComponent } from "./courses/courses.component";
 import { CoursesListComponent } from "./courses/courses-list/courses-list.component";
 import { HeaderComponent } from "./header/header.component";
 import { IndexComponent } from "./index/index.component";
 import { CoursesListItemComponent } from "./courses/courses-list/courses-list-item/courses-list-item.component";
-import { CourseEditComponent } from './courses/course-edit/course-edit.component';
-import { CourseNotFoundComponent } from './courses/course-not-found/course-not-found.component';
-import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
-import { CourseDeleteComponent } from './courses/course-edit/course-delete/course-delete.component';
+import { CourseEditComponent } from "./courses/course-edit/course-edit.component";
+import { CourseNotFoundComponent } from "./courses/course-not-found/course-not-found.component";
+import { CourseDetailComponent } from "./courses/course-detail/course-detail.component";
+import { CourseDeleteComponent } from "./courses/course-edit/course-delete/course-delete.component";
 
 @NgModule({
   declarations: [

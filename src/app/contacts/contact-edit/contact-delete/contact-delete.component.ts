@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { Contact } from "src/app/shared/contact.model";
-import { ContactsService } from "../contacts.service";
+import { ContactsService } from "../../contacts.service";
 
 @Component({
   selector: "app-contact-delete",
