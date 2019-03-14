@@ -1,10 +1,11 @@
-<div>
-  <ul>
-    <li>
-      <a [routerLink]="['/courses']" routerLinkActive="active">Courses</a>
-    </li>
-    <li>
-      <a [routerLink]="['/contacts']" routerLinkActive="active">Contacts</a>
-    </li>
-  </ul>
-</div>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <i class="material-icons">school</i>
+    <a mat-button [routerLink]="['/courses']" routerLinkActive="mat-accent"
+      >Courses</a
+    >
+    <a mat-button [routerLink]="['/contacts']" routerLinkActive="mat-accent"
+      >Contacts</a
+    >
+  </mat-toolbar-row>
+</mat-toolbar>

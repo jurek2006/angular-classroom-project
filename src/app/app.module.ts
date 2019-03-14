@@ -20,10 +20,12 @@ import { CourseEditComponent } from "./courses/course-edit/course-edit.component
 import { CourseNotFoundComponent } from "./courses/course-not-found/course-not-found.component";
 import { CourseDetailComponent } from "./courses/course-detail/course-detail.component";
 import { CourseDeleteComponent } from "./courses/course-edit/course-delete/course-delete.component";
-import { CourseContactsComponent } from './courses/course-detail/course-contacts/course-contacts.component';
-import { TestComponent } from './test/test.component';
-import { CourseSigninComponent } from './courses/course-detail/course-signin/course-signin.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CourseContactsComponent } from "./courses/course-detail/course-contacts/course-contacts.component";
+import { TestComponent } from "./test/test.component";
+import { CourseSigninComponent } from "./courses/course-detail/course-signin/course-signin.component";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatButtonModule } from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -48,7 +50,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     TestComponent,
     CourseSigninComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, BrowserAnimationsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatButtonModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
