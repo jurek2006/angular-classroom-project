@@ -23,6 +23,7 @@ import { CourseDeleteComponent } from "./courses/course-edit/course-delete/cours
 import { CourseContactsComponent } from './courses/course-detail/course-contacts/course-contacts.component';
 import { TestComponent } from './test/test.component';
 import { CourseSigninComponent } from './courses/course-detail/course-signin/course-signin.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,7 @@ import { CourseSigninComponent } from './courses/course-detail/course-signin/cou
     TestComponent,
     CourseSigninComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, BrowserAnimationsModule],
   providers: [],
   bootstrap: [AppComponent]
 })
