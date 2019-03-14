@@ -88,4 +88,6 @@ Uaktualnienie nauczycieli i uczniów przy zmianie wybranego kursu.
 
 ## Dodawanie uczniów do kursu
 
-Refaktor i naprawienie błędu
+Refaktor i naprawienie błędu. 
+
+W aktualnej próbie nie jest uaktualniany wybrany typ

@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Course } from "../shared/courses.model";
 import { Subject } from "rxjs";
+import { ContactsService } from "../contacts/contacts.service";
 
 @Injectable({
   providedIn: "root"
@@ -10,21 +11,26 @@ export class CoursesService {
   public courseChanged = new Subject<Course>();
 
   private courses: Course[] = [
-    new Course(
-      null,
-      "English",
-      "English for adults",
-      ["2648eee6-2f9e-454a-934a-96fa5e3487be"],
-      [
-        "6f71d945-9518-4028-b27d-3f27efce1f87",
-        "0a8d68a0-1479-4121-8b5e-cf75d3e87c0c"
+    new Course(null, "English", "English for adults", {
+      teachers: [
+        this.contactsService.getContactById(
+          "2648eee6-2f9e-454a-934a-96fa5e3487be"
+        )
+      ],
+      students: [
+        this.contactsService.getContactById(
+          "6f71d945-9518-4028-b27d-3f27efce1f87"
+        ),
+        this.contactsService.getContactById(
+          "0a8d68a0-1479-4121-8b5e-cf75d3e87c0c"
+        )
       ]
-    ),
+    }),
     new Course(null, "Espanol", "Espanol para ninos"),
     new Course(null, "Deutsch", "Deutch DE")
   ];
 
-  constructor() {}
+  constructor(private contactsService: ContactsService) {}
 
   public getCourses(): Course[] {
     return JSON.parse(JSON.stringify(this.courses)); // deep copy of courses
@@ -38,7 +44,7 @@ export class CoursesService {
   public addCourse(shortCourseName: string, fullCourseName: string) {
     this.courses = [
       ...this.courses,
-      new Course(null, shortCourseName, fullCourseName, null, null)
+      new Course(null, shortCourseName, fullCourseName)
     ];
     this.coursesChanged.next(this.getCourses());
   }
@@ -51,13 +57,7 @@ export class CoursesService {
     this.courses = this.courses.map(
       (course: Course): Course => {
         return course.id === id
-          ? new Course(
-              id,
-              newShortCourseName,
-              newFullCourseName,
-              course.teachersIds,
-              course.studentsIds
-            )
+          ? new Course(id, newShortCourseName, newFullCourseName, course.signed)
           : course;
       }
     );
@@ -80,14 +80,15 @@ export class CoursesService {
     const foundCourse = this.courses.find(
       (course: Course) => course.id === courseId
     );
-    if (contactType === "student") {
-      console.log(`Dopisz ucznia ${contactId} do kursu ${courseId}`);
-      foundCourse.studentsIds = [...foundCourse.studentsIds, contactId];
-    } else if (contactType === "teacher") {
-      console.log(`Dopisz nauczuciela ${contactId} do kursu ${courseId}`);
-      foundCourse.teachersIds = [...foundCourse.teachersIds, contactId];
+
+    if (foundCourse.signed[contactType]) {
+      foundCourse.signed[contactType] = [
+        ...foundCourse.signed[contactType],
+        this.contactsService.getContactById(contactId)
+      ];
+      this.courseChanged.next();
+    } else {
+      console.log(`There is no '${contactType}' type in courses signin object`);
     }
-    console.log(this.courses);
-    this.courseChanged.next(this.getCourseById(courseId));
   }
 }

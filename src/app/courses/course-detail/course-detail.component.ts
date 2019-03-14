@@ -13,8 +13,8 @@ import { Subscription } from "rxjs";
 })
 export class CourseDetailComponent implements OnInit {
   private course: Course;
-  private teachers: Contact[];
-  private students: Contact[];
+  // private teachers: Contact[];
+  // private students: Contact[];
   private id: string;
   private subscription: Subscription;
 
@@ -36,36 +36,10 @@ export class CourseDetailComponent implements OnInit {
         });
       }
 
-      this.teachers = this.course.teachersIds
-        ? this.course.teachersIds.map(teacherId => {
-            return this.contactsService.getContactById(teacherId);
-          })
-        : [];
-
-      this.students = this.course.studentsIds
-        ? this.course.studentsIds.map(studentId => {
-            return this.contactsService.getContactById(studentId);
-          })
-        : [];
-    });
-
-    this.subscription = this.coursesService.courseChanged.subscribe(
-      (course: Course) => {
-        console.log("la la la");
+      this.subscription = this.coursesService.courseChanged.subscribe(() => {
+        // when course was changed update its data
         this.course = this.coursesService.getCourseById(this.id);
-
-        this.teachers = this.course.teachersIds
-          ? this.course.teachersIds.map(teacherId => {
-              return this.contactsService.getContactById(teacherId);
-            })
-          : [];
-
-        this.students = this.course.studentsIds
-          ? this.course.studentsIds.map(studentId => {
-              return this.contactsService.getContactById(studentId);
-            })
-          : [];
-      }
-    );
+      });
+    });
   }
 }

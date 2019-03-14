@@ -1,9 +1,11 @@
-<h3>{{ title }}</h3>
-<a [routerLink]="['signin', type]">Sign in</a>
-<ul>
-  <li *ngFor="let contact of contacts">
-    <a [routerLink]="'/contacts/' + contact.id"
-      >{{ contact.firstName }} {{ contact.lastName }}</a
-    >
-  </li>
-</ul>
+<div *ngIf="contacts[type]">
+  <h3>{{ title }}</h3>
+  <a [routerLink]="['signin', type]">Sign in</a>
+  <ul>
+    <li *ngFor="let contact of contacts[type]">
+      <a [routerLink]="'/contacts/' + contact.id"
+        >{{ contact.firstName }} {{ contact.lastName }}</a
+      >
+    </li>
+  </ul>
+</div>
