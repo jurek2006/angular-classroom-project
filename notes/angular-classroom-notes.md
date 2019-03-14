@@ -90,4 +90,4 @@ Uaktualnienie nauczycieli i uczniów przy zmianie wybranego kursu.
 
 Refaktor i naprawienie błędu. 
 
-W aktualnej próbie nie jest uaktualniany wybrany typ
+Ukrycie komponentu course-signin po dodaniu kontaktu (redirect) i dodanie pytania potwierdzającego

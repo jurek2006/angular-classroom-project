@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Params } from "@angular/router";
+import { ActivatedRoute, Params, Router } from "@angular/router";
 import { CoursesService } from "../../courses.service";
 
 @Component({
@@ -14,7 +14,8 @@ export class CourseSigninComponent implements OnInit {
 
   constructor(
     private coursesService: CoursesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -31,5 +32,6 @@ export class CourseSigninComponent implements OnInit {
       this.contactId,
       this.contactType
     );
+    this.router.navigate([".."], { relativeTo: this.route });
   }
 }

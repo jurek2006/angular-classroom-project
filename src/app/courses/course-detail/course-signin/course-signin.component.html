@@ -1,4 +1,5 @@
-<p>
-  course-signin works!
-</p>
-<button (click)="signIn()">Dopisz do kursu</button>
+<div class="">
+  <p>Czy chcesz dopisać do kursu?</p>
+  <button (click)="signIn()">Tak, dopisz do kursu</button>
+  <a [routerLink]="['..']">Nie</a>
+</div>
