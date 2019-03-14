@@ -93,3 +93,7 @@ Refaktor i naprawienie błędu.
 Ukrycie komponentu course-signin po dodaniu kontaktu (redirect) i dodanie pytania potwierdzającego
 
 ## Zapobieganie ponownemu dodaniu kontaktu jako ucznia/nauczyciela
+
+## Komunikat, że już jest w nauczycielach/uczniach lub że nie udało się
+
+Modal (snack-bar ?)
