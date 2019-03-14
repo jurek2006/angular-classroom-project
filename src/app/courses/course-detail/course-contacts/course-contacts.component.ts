@@ -10,7 +10,6 @@ export class CourseContactsComponent implements OnInit, OnChanges {
   @Input() type: string; // object contacts property name to get data
   @Input() title: string;
   @Input() contacts: Contact[];
-  contactsOfGivenType: Contact[];
 
   constructor() {}
 

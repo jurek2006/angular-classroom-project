@@ -82,11 +82,20 @@ export class CoursesService {
     );
 
     if (foundCourse.signed[contactType]) {
-      foundCourse.signed[contactType] = [
-        ...foundCourse.signed[contactType],
-        this.contactsService.getContactById(contactId)
-      ];
-      this.courseChanged.next();
+      // check if contact haven't been already assigned to teachers/students for the course
+      if (
+        foundCourse.signed[contactType].find(contact => {
+          return contact.id === contactId;
+        })
+      ) {
+        console.log("Contact is already signed to the course");
+      } else {
+        foundCourse.signed[contactType] = [
+          ...foundCourse.signed[contactType],
+          this.contactsService.getContactById(contactId)
+        ];
+        this.courseChanged.next();
+      }
     } else {
       console.log(`There is no '${contactType}' type in courses signin object`);
     }

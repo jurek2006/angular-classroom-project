@@ -91,3 +91,5 @@ Uaktualnienie nauczycieli i uczniów przy zmianie wybranego kursu.
 Refaktor i naprawienie błędu. 
 
 Ukrycie komponentu course-signin po dodaniu kontaktu (redirect) i dodanie pytania potwierdzającego
+
+## Zapobieganie ponownemu dodaniu kontaktu jako ucznia/nauczyciela

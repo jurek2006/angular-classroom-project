@@ -27,7 +27,7 @@ export class CourseSigninComponent implements OnInit {
   }
 
   signIn() {
-    this.coursesService.signInContactToCourse(
+    const signingStatus = this.coursesService.signInContactToCourse(
       this.courseId,
       this.contactId,
       this.contactType
