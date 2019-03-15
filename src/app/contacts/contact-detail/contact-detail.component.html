@@ -1,4 +1,6 @@
-<div *ngIf="contact">
-  <p>{{ contact.firstName }} {{ contact.lastName }}</p>
-  <a [routerLink]="['edit']">Edit</a>
-</div>
+<mat-card class="card" *ngIf="contact">
+  <mat-card-title
+    >{{ contact.firstName }} {{ contact.lastName }}</mat-card-title
+  >
+  <a mat-raised-button color="primary" [routerLink]="['edit']">Edit</a>
+</mat-card>

@@ -1,8 +1,19 @@
-<a [routerLink]="['new']" routerLinkActive="active">New contact</a>
+<mat-card class="card">
+  <mat-card-title>Contact list</mat-card-title>
+  <mat-card-content>
+    <a
+      mat-raised-button
+      color="accent"
+      [routerLink]="['new']"
+      routerLinkActive="active"
+      >New contact</a
+    >
 
-<ul>
-  <app-contacts-list-item
-    *ngFor="let contact of contacts"
-    [contact]="contact"
-  ></app-contacts-list-item>
-</ul>
+    <ul>
+      <app-contacts-list-item
+        *ngFor="let contact of contacts"
+        [contact]="contact"
+      ></app-contacts-list-item>
+    </ul>
+  </mat-card-content>
+</mat-card>

@@ -1,35 +1,63 @@
-<form *ngIf="!deleteMode" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-  <div>
-    <label for="firstName">First name:</label>
-    <input
-      type="text"
-      name="firstName"
-      id="firstName"
-      formControlName="firstName"
-    />
-  </div>
-  <div>
-    <label for="lastName">Last name:</label>
-    <input
-      type="text"
-      name="lastName"
-      id="lastName"
-      formControlName="lastName"
-    />
-  </div>
-  <div class="">
-    <button [disabled]="!contactForm.valid">Save contact</button>
-  </div>
-  <div class="">
-    <button type="button" (click)="onCancel()">Cancel</button>
-    <button type="button" (click)="onDeleteContact()">Delete</button>
-  </div>
-</form>
+<mat-card class="card">
+  <mat-card-title>
+    <span *ngIf="editMode; else noEdit">Edit contact</span>
+    <ng-template #noEdit>
+      <span>Add new contact</span>
+    </ng-template>
+  </mat-card-title>
 
-<!-- component for deleting contact on purpose nested in edit - component -->
-<!-- the reason is not to create separate route which could be accessed by mistake -->
-<app-contact-delete
-  *ngIf="deleteMode"
-  [contact]="contactToEdit"
-  (cancelDelete)="deleteMode = false"
-></app-contact-delete>
+  <form *ngIf="!deleteMode" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+      <mat-form-field>
+        <mat-label>First name:</mat-label>
+        <input
+          type="text"
+          name="firstName"
+          id="firstName"
+          formControlName="firstName"
+          matInput
+          placeholder="First name"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Last name:</mat-label>
+        <input
+          type="text"
+          name="lastName"
+          id="lastName"
+          formControlName="lastName"
+          matInput
+          placeholder="Last name"
+        />
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        [disabled]="!contactForm.valid"
+        mat-stroked-button
+        color="primary"
+      >
+        Save contact
+      </button>
+      <button type="button" (click)="onCancel()" mat-stroked-button>
+        Cancel
+      </button>
+      <button
+        *ngIf="editMode"
+        type="button"
+        (click)="onDeleteContact()"
+        mat-stroked-button
+      >
+        Delete contact
+      </button>
+    </mat-card-actions>
+  </form>
+
+  <!-- component for deleting contact on purpose nested in edit - component -->
+  <!-- the reason is not to create separate route which could be accessed by mistake -->
+  <app-contact-delete
+    *ngIf="deleteMode"
+    [contact]="contactToEdit"
+    (cancelDelete)="deleteMode = false"
+  ></app-contact-delete>
+</mat-card>
