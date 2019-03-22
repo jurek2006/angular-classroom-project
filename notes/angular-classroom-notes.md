@@ -96,4 +96,8 @@ Ukrycie komponentu course-signin po dodaniu kontaktu (redirect) i dodanie pytani
 
 ## Komunikat, że już jest w nauczycielach/uczniach lub że nie udało się
 
-Modal (snack-bar ?)
+Modal (snack-bar ?) dla tego, że kontakt już dodany.
+
+Posprzątać course-detail.
+
+Stylowanie snack - pozytywny, warning (kontakt już jest dopisany), error

@@ -28,6 +28,8 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
 import { MatInputModule } from "@angular/material/input";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { SnackBarComponent } from "./other/snack-bar/snack-bar.component";
 
 @NgModule({
   declarations: [
@@ -50,7 +52,8 @@ import { MatInputModule } from "@angular/material/input";
     CourseDeleteComponent,
     CourseContactsComponent,
     TestComponent,
-    CourseSigninComponent
+    CourseSigninComponent,
+    SnackBarComponent
   ],
   imports: [
     BrowserModule,
@@ -60,9 +63,12 @@ import { MatInputModule } from "@angular/material/input";
     MatToolbarModule,
     MatButtonModule,
     MatCardModule,
-    MatInputModule
+    MatInputModule,
+    MatSnackBarModule
   ],
-  providers: [],
+  providers: [
+    // { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 1000 } }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

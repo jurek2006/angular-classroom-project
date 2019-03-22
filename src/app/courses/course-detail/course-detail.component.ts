@@ -13,8 +13,6 @@ import { Subscription } from "rxjs";
 })
 export class CourseDetailComponent implements OnInit {
   private course: Course;
-  // private teachers: Contact[];
-  // private students: Contact[];
   private id: string;
   private subscription: Subscription;
 

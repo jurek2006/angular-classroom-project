@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { CoursesService } from "../../courses.service";
+import { MatSnackBar } from "@angular/material";
+import { SnackBarComponent } from "src/app/other/snack-bar/snack-bar.component";
 
 @Component({
   selector: "app-course-signin",
@@ -15,7 +17,8 @@ export class CourseSigninComponent implements OnInit {
   constructor(
     private coursesService: CoursesService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -32,6 +35,9 @@ export class CourseSigninComponent implements OnInit {
       this.contactId,
       this.contactType
     );
+    this.snackBar.open(signingStatus.msg, "OK", {
+      panelClass: !signingStatus.status ? "snackbar-warning" : ""
+    });
     this.router.navigate([".."], { relativeTo: this.route });
   }
 }

@@ -34,26 +34,47 @@ export class ContactsService {
   }
 
   public addContact(firstName: string, lastName: string) {
-    this.contacts = [...this.contacts, new Contact(null, firstName, lastName)];
+    const newContact = new Contact(null, firstName, lastName);
+    this.contacts = [...this.contacts, newContact];
     this.contactsChanged.next(this.getContacts());
+    return JSON.parse(JSON.stringify(newContact)); // returns new contact (with generated id)
   }
 
   public editContact(id: string, newFirstName: string, newLastName: string) {
+    const updatedContact = new Contact(id, newFirstName, newLastName);
     this.contacts = this.contacts.map(
       (contact: Contact): Contact => {
-        return contact.id === id
-          ? new Contact(id, newFirstName, newLastName)
-          : contact;
+        return contact.id === id ? updatedContact : contact;
       }
     );
     this.contactsChanged.next(this.getContacts());
+    return JSON.parse(JSON.stringify(updatedContact));
   }
 
-  public deleteContactById(id: string): boolean {
-    this.contacts = this.contacts.filter((contact: Contact) => {
-      return contact.id !== id;
+  public deleteContactById(id: string): any {
+    // find if contact with given id exists
+    const contactToDelete = this.contacts.find((contact: Contact) => {
+      return contact.id === id;
     });
-    this.contactsChanged.next(this.getContacts());
-    return true;
+
+    if (!contactToDelete) {
+      this.contacts = this.contacts.filter((contact: Contact) => {
+        return contact !== contactToDelete;
+      });
+      this.contactsChanged.next(this.getContacts());
+      return {
+        status: true,
+        msg: `Contact ${contactToDelete.firstName} ${
+          contactToDelete.lastName
+        } deleted`
+      };
+    } else {
+      return {
+        status: false,
+        msg: `Can't delete contact ${contactToDelete.firstName} ${
+          contactToDelete.lastName
+        }. Contact doesn't exist`
+      };
+    }
   }
 }

@@ -3,6 +3,7 @@ import { ContactsService } from "../contacts.service";
 import { Contact } from "src/app/shared/contact.model";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { Router, ActivatedRoute } from "@angular/router";
+import { MatSnackBar } from "@angular/material";
 
 @Component({
   selector: "app-contact-edit",
@@ -18,7 +19,8 @@ export class ContactEditComponent implements OnInit {
   constructor(
     private contactsService: ContactsService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -51,15 +53,27 @@ export class ContactEditComponent implements OnInit {
 
   onSubmit() {
     if (this.editMode) {
-      this.contactsService.editContact(
+      const updatedContact = this.contactsService.editContact(
         this.contactToEdit.id,
         this.contactForm.value.firstName,
         this.contactForm.value.lastName
       );
+      this.snackBar.open(
+        `Updated contact ${updatedContact.firstName} ${
+          updatedContact.lastName
+        }`,
+        "ok"
+      );
     } else {
-      this.contactsService.addContact(
+      const createdContact = this.contactsService.addContact(
         this.contactForm.value.firstName,
         this.contactForm.value.lastName
+      );
+      this.snackBar.open(
+        `Created contact ${createdContact.firstName} ${
+          createdContact.lastName
+        }`,
+        "ok"
       );
     }
     this.onCancel();

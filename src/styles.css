@@ -13,3 +13,23 @@ body {
 .card {
   margin: 1em;
 }
+
+.snackbar-error {
+  color: white;
+  background: #cc3300;
+}
+
+.snackbar-warning {
+  color: #000;
+  background: #ffcc00;
+}
+
+.snackbar-warning button {
+  color: #000;
+  background-color: white;
+}
+
+.snackbar-success {
+  color: white;
+  background: #339900;
+}

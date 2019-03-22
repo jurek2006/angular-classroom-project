@@ -19,9 +19,9 @@ export class CourseContactsComponent implements OnInit, OnChanges {
       // if there is no proper property on object show warning
       // (as template doesn't show because of ngIf statement)
       console.warn(
-        `Not showing course contacts. There is no property '${
+        `Not showing course '${this.type}' contacts. There is no property '${
           this.type
-        }' on contacts object. See existing properties: `,
+        }' on course.signed. See existing properties: `,
         this.contacts
       );
     }

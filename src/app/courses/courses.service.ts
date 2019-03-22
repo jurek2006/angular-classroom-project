@@ -82,22 +82,47 @@ export class CoursesService {
     );
 
     if (foundCourse.signed[contactType]) {
-      // check if contact haven't been already assigned to teachers/students for the course
+      // if there is property contactType in course.signed (e.g. teachers or students) to assign contact
+
+      // contacts's data needed here for fail message (when contact already signed in)
+      const contactToSignIn = this.contactsService.getContactById(contactId);
+
+      // check if contact have been already assigned to teachers/students for the course
       if (
         foundCourse.signed[contactType].find(contact => {
           return contact.id === contactId;
         })
       ) {
-        console.log("Contact is already signed to the course");
+        return {
+          status: false,
+          msg: `${contactToSignIn.firstName} ${
+            contactToSignIn.lastName
+          } is already signed in to the course ${foundCourse.shortCourseName}`
+        };
       } else {
+        // if contact hasn't been assigned yet - sign in
         foundCourse.signed[contactType] = [
           ...foundCourse.signed[contactType],
-          this.contactsService.getContactById(contactId)
+          contactToSignIn
         ];
         this.courseChanged.next();
+        return {
+          status: true,
+          msg: `${contactToSignIn.firstName} ${
+            contactToSignIn.lastName
+          } signed in to the course ${foundCourse.shortCourseName}`
+        };
       }
     } else {
-      console.log(`There is no '${contactType}' type in courses signin object`);
+      // error - there is no property contactType
+      console.error(
+        `There is no '${contactType}' type in course ${foundCourse} signed object. See existing properties: `,
+        foundCourse.signed
+      );
+      return {
+        status: false,
+        msg: `There is no '${contactType}' type in courses signin object`
+      };
     }
   }
 }
