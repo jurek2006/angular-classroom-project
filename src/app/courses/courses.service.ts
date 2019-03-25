@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Course } from "../shared/courses.model";
 import { Subject } from "rxjs";
 import { ContactsService } from "../contacts/contacts.service";
+import { MessageService } from "../shared/message.service";
 
 @Injectable({
   providedIn: "root"
@@ -30,7 +31,10 @@ export class CoursesService {
     new Course(null, "Deutsch", "Deutch DE")
   ];
 
-  constructor(private contactsService: ContactsService) {}
+  constructor(
+    private contactsService: ContactsService,
+    private messageService: MessageService
+  ) {}
 
   public getCourses(): Course[] {
     return JSON.parse(JSON.stringify(this.courses)); // deep copy of courses
@@ -47,6 +51,7 @@ export class CoursesService {
       new Course(null, shortCourseName, fullCourseName)
     ];
     this.coursesChanged.next(this.getCourses());
+    this.messageService.showMessage(`Course ${shortCourseName} added`, "OK");
   }
 
   public editCourse(
@@ -62,6 +67,10 @@ export class CoursesService {
       }
     );
     this.coursesChanged.next(this.getCourses());
+    this.messageService.showMessage(
+      `Course ${newShortCourseName} updated`,
+      "OK"
+    );
   }
 
   public deleteCourseById(id: string): boolean {
@@ -93,12 +102,14 @@ export class CoursesService {
           return contact.id === contactId;
         })
       ) {
-        return {
-          status: false,
-          msg: `${contactToSignIn.firstName} ${
+        this.messageService.showMessage(
+          `${contactToSignIn.firstName} ${
             contactToSignIn.lastName
-          } is already signed in to the course ${foundCourse.shortCourseName}`
-        };
+          } is already signed in to the course ${foundCourse.shortCourseName}`,
+          "ok",
+          "warning"
+        );
+        return { statusOk: false };
       } else {
         // if contact hasn't been assigned yet - sign in
         foundCourse.signed[contactType] = [
@@ -106,23 +117,28 @@ export class CoursesService {
           contactToSignIn
         ];
         this.courseChanged.next();
-        return {
-          status: true,
-          msg: `${contactToSignIn.firstName} ${
+        this.messageService.showMessage(
+          `${contactToSignIn.firstName} ${
             contactToSignIn.lastName
-          } signed in to the course ${foundCourse.shortCourseName}`
-        };
+          } signed in to the course ${foundCourse.shortCourseName}`,
+          "ok"
+        );
+        return { statusOK: true };
       }
     } else {
-      // error - there is no property contactType
+      // error - there is no property contactType (i.e. students or teachers)
       console.error(
         `There is no '${contactType}' type in course ${foundCourse} signed object. See existing properties: `,
         foundCourse.signed
       );
-      return {
-        status: false,
-        msg: `There is no '${contactType}' type in courses signin object`
-      };
+
+      this.messageService.showMessage(
+        `There is no '${contactType}' type in courses signin object`,
+        "ok",
+        "error"
+      );
+
+      return { statusOk: false };
     }
   }
 }

@@ -35,9 +35,6 @@ export class CourseSigninComponent implements OnInit {
       this.contactId,
       this.contactType
     );
-    this.snackBar.open(signingStatus.msg, "OK", {
-      panelClass: !signingStatus.status ? "snackbar-warning" : ""
-    });
     this.router.navigate([".."], { relativeTo: this.route });
   }
 }

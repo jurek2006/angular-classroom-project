@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import { CoursesService } from "../courses.service";
 import { Course } from "src/app/shared/courses.model";
