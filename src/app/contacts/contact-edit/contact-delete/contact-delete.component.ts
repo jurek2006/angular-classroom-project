@@ -23,16 +23,7 @@ export class ContactDeleteComponent implements OnInit {
   ngOnInit() {}
 
   onConfirmDelete() {
-    const operationStatus = this.contactsService.deleteContactById(
-      this.contact.id
-    );
-    if (operationStatus.status) {
-      this.snackBar.open(operationStatus.msg, "ok");
-    } else {
-      this.snackBar.open(operationStatus.msg, "X", {
-        panelClass: "snackbar-error"
-      });
-    }
+    this.contactsService.deleteContactById(this.contact.id);
     this.router.navigate(["../.."], { relativeTo: this.route });
   }
 
