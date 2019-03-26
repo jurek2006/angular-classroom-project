@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Contact } from "../shared/contact.model";
 import { Subject } from "rxjs";
 import { MessageService } from "../shared/message.service";
+import { Status } from "../shared/status";
 
 @Injectable({
   providedIn: "root"
@@ -45,22 +46,38 @@ export class ContactsService {
     return JSON.parse(JSON.stringify(newContact)); // returns new contact (with generated id)
   }
 
-  public editContact(id: string, newFirstName: string, newLastName: string) {
-    const updatedContact = new Contact(id, newFirstName, newLastName);
-    this.contacts = this.contacts.map(
-      (contact: Contact): Contact => {
-        return contact.id === id ? updatedContact : contact;
-      }
-    );
-    this.contactsChanged.next(this.getContacts());
-    this.messageService.showMessage(
-      `Contact ${updatedContact.firstName} ${updatedContact.lastName} updated`,
-      "ok"
-    );
-    return JSON.parse(JSON.stringify(updatedContact));
+  public editContact(
+    id: string,
+    newFirstName: string,
+    newLastName: string
+  ): Contact {
+    if (this.getContactById(id)) {
+      // if contact exist
+      const updatedContact = new Contact(id, newFirstName, newLastName);
+      this.contacts = this.contacts.map(
+        (contact: Contact): Contact => {
+          return contact.id === id ? updatedContact : contact;
+        }
+      );
+      this.contactsChanged.next(this.getContacts());
+      this.messageService.showMessage(
+        `Contact ${updatedContact.firstName} ${
+          updatedContact.lastName
+        } updated`,
+        "ok"
+      );
+      return JSON.parse(JSON.stringify(updatedContact));
+    } else {
+      this.messageService.showMessage(
+        `Contact with id ${id} doesn't exist`,
+        "ok",
+        "error"
+      );
+      return null;
+    }
   }
 
-  public deleteContactById(id: string): any {
+  public deleteContactById(id: string): Status {
     // find if contact with given id exists
     // returns object with property statusOk - true if deletion succeeded
 
