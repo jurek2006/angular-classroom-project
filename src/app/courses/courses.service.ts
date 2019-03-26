@@ -46,32 +46,57 @@ export class CoursesService {
     return foundCourse ? JSON.parse(JSON.stringify(foundCourse)) : null;
   }
 
-  public addCourse(shortCourseName: string, fullCourseName: string) {
+  public addCourse(shortCourseName: string, fullCourseName: string): Status {
     this.courses = [
       ...this.courses,
       new Course(null, shortCourseName, fullCourseName)
     ];
     this.coursesChanged.next(this.getCourses());
     this.messageService.showMessage(`Course ${shortCourseName} added`, "OK");
+    return {
+      statusOk: true
+    };
   }
 
   public editCourse(
     id: string,
     newShortCourseName: string,
     newFullCourseName: string
-  ) {
-    this.courses = this.courses.map(
-      (course: Course): Course => {
-        return course.id === id
-          ? new Course(id, newShortCourseName, newFullCourseName, course.signed)
-          : course;
+  ): Status {
+    if (this.getCourseById(id)) {
+      // if found course with given id
+      this.courses = this.courses.map(
+        (course: Course): Course => {
+          return course.id === id
+            ? new Course(
+                id,
+                newShortCourseName,
+                newFullCourseName,
+                course.signed
+              )
+            : course;
+        }
+      );
+      this.coursesChanged.next(this.getCourses());
+      this.messageService.showMessage(
+        `Course ${newShortCourseName} updated`,
+        "OK"
+      );
+      return {
+        statusOk: true
+      };
+    } else {
+      {
+        this.messageService.showMessage(
+          `Course with id ${id} does not exist`,
+          "OK",
+          "error"
+        );
+        return {
+          statusOk: false
+        };
       }
-    );
-    this.coursesChanged.next(this.getCourses());
-    this.messageService.showMessage(
-      `Course ${newShortCourseName} updated`,
-      "OK"
-    );
+    }
   }
 
   public deleteCourseById(id: string): Status {
@@ -88,8 +113,7 @@ export class CoursesService {
         "ok"
       );
       return {
-        statusOk: true,
-        statusMsg: `Course ${courseToDelete.shortCourseName} deleted`
+        statusOk: true
       };
     } else {
       // if course with id doesn't exist
@@ -99,8 +123,7 @@ export class CoursesService {
         "error"
       );
       return {
-        statusOk: false,
-        statusMsg: `Course with id ${id} does not exist`
+        statusOk: false
       };
     }
   }
@@ -109,7 +132,7 @@ export class CoursesService {
     courseId: string,
     contactId: string,
     contactType: string
-  ) {
+  ): Status {
     const foundCourse = this.courses.find(
       (course: Course) => course.id === courseId
     );
@@ -147,7 +170,9 @@ export class CoursesService {
           } signed in to the course ${foundCourse.shortCourseName}`,
           "ok"
         );
-        return { statusOK: true };
+        return {
+          statusOk: true
+        };
       }
     } else {
       // error - there is no property contactType (i.e. students or teachers)
