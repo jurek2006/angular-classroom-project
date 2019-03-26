@@ -28,7 +28,10 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
 import { MatInputModule } from "@angular/material/input";
-import { MatSnackBarModule } from "@angular/material/snack-bar";
+import {
+  MatSnackBarModule,
+  MAT_SNACK_BAR_DEFAULT_OPTIONS
+} from "@angular/material/snack-bar";
 import { SnackBarComponent } from "./other/snack-bar/snack-bar.component";
 
 @NgModule({
@@ -67,7 +70,7 @@ import { SnackBarComponent } from "./other/snack-bar/snack-bar.component";
     MatSnackBarModule
   ],
   providers: [
-    // { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 1000 } }
+    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 1500 } }
   ],
   bootstrap: [AppComponent]
 })
