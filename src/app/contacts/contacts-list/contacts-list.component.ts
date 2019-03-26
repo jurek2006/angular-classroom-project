@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Contact } from "src/app/shared/contact.model";
 import { ContactsService } from "../contacts.service";
 import { Subscription } from "rxjs";
@@ -8,7 +8,7 @@ import { Subscription } from "rxjs";
   templateUrl: "./contacts-list.component.html",
   styleUrls: ["./contacts-list.component.css"]
 })
-export class ContactsListComponent implements OnInit {
+export class ContactsListComponent implements OnInit, OnDestroy {
   private contacts: Contact[];
   private subscription: Subscription;
 
@@ -21,5 +21,9 @@ export class ContactsListComponent implements OnInit {
         this.contacts = contacts;
       }
     );
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }
