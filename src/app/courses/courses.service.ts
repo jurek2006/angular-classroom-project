@@ -74,11 +74,28 @@ export class CoursesService {
   }
 
   public deleteCourseById(id: string): boolean {
-    this.courses = this.courses.filter((course: Course) => {
-      return course.id !== id;
-    });
-    this.coursesChanged.next(this.getCourses());
-    return true;
+    // check if course exist
+    const courseToDelete = this.getCourseById("id");
+
+    if (courseToDelete) {
+      this.courses = this.courses.filter((course: Course) => {
+        return course !== courseToDelete;
+      });
+      this.coursesChanged.next(this.getCourses());
+      this.messageService.showMessage(
+        `Course ${courseToDelete.shortCourseName} deleted`,
+        "ok"
+      );
+      return true; // NEEDED TO CHANGE
+    } else {
+      // if course with id doesn't exist
+      this.messageService.showMessage(
+        `Course with id ${id} does not exist`,
+        "ok",
+        "error"
+      );
+      return false; // NEEDED TO CHANGE
+    }
   }
 
   public signInContactToCourse(
