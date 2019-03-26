@@ -3,6 +3,7 @@ import { Course } from "../shared/courses.model";
 import { Subject } from "rxjs";
 import { ContactsService } from "../contacts/contacts.service";
 import { MessageService } from "../shared/message.service";
+import { Status } from "../shared/status";
 
 @Injectable({
   providedIn: "root"
@@ -73,20 +74,23 @@ export class CoursesService {
     );
   }
 
-  public deleteCourseById(id: string): boolean {
+  public deleteCourseById(id: string): Status {
     // check if course exist
-    const courseToDelete = this.getCourseById("id");
+    const courseToDelete = this.getCourseById(id);
 
     if (courseToDelete) {
       this.courses = this.courses.filter((course: Course) => {
-        return course !== courseToDelete;
+        return course.id !== id;
       });
       this.coursesChanged.next(this.getCourses());
       this.messageService.showMessage(
         `Course ${courseToDelete.shortCourseName} deleted`,
         "ok"
       );
-      return true; // NEEDED TO CHANGE
+      return {
+        statusOk: true,
+        statusMsg: `Course ${courseToDelete.shortCourseName} deleted`
+      };
     } else {
       // if course with id doesn't exist
       this.messageService.showMessage(
@@ -94,7 +98,10 @@ export class CoursesService {
         "ok",
         "error"
       );
-      return false; // NEEDED TO CHANGE
+      return {
+        statusOk: false,
+        statusMsg: `Course with id ${id} does not exist`
+      };
     }
   }
 
