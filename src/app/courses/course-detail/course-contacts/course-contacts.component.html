@@ -1,11 +1,12 @@
-<!-- <div *ngIf="contacts[type]"> -->
-<h3>{{ title }}</h3>
-<a [routerLink]="['signin', type]">Sign in</a>
-<ul>
-  <li *ngFor="let contact of contacts[type]">
-    <a [routerLink]="'/contacts/' + contact.id"
-      >{{ contact.firstName }} {{ contact.lastName }}</a
-    >
-  </li>
-</ul>
-<!-- </div> -->
+<div *ngIf="contacts[type]">
+  <!-- if there is no given property (i.e. teachers) on contacts object - not showing anything -->
+  <h3>{{ title }}</h3>
+  <a [routerLink]="['signin', type]">Sign in</a>
+  <ul>
+    <li *ngFor="let contact of contacts[type]">
+      <a [routerLink]="'/contacts/' + contact.id"
+        >{{ contact.firstName }} {{ contact.lastName }}</a
+      >
+    </li>
+  </ul>
+</div>
