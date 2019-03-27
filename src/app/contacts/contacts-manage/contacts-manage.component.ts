@@ -4,11 +4,11 @@ import { ContactsService } from "../contacts.service";
 import { Subscription } from "rxjs";
 
 @Component({
-  selector: "app-contacts-list",
-  templateUrl: "./contacts-list.component.html",
-  styleUrls: ["./contacts-list.component.css"]
+  selector: "app-contacts-manage",
+  templateUrl: "./contacts-manage.component.html",
+  styleUrls: ["./contacts-manage.component.css"]
 })
-export class ContactsListComponent implements OnInit, OnDestroy {
+export class ContactsManageComponent implements OnInit, OnDestroy {
   private contacts: Contact[];
   private subscription: Subscription;
 

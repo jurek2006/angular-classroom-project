@@ -10,7 +10,7 @@ import { CourseDetailComponent } from "./courses/course-detail/course-detail.com
 import { CourseNotFoundComponent } from "./courses/course-not-found/course-not-found.component";
 import { CourseEditComponent } from "./courses/course-edit/course-edit.component";
 import { TestComponent } from "./test/test.component";
-import { ContactsListComponent } from "./contacts/contacts-list/contacts-list.component";
+import { ContactsManageComponent } from "./contacts/contacts-manage/contacts-manage.component";
 import { CourseSigninComponent } from "./courses/course-detail/course-signin/course-signin.component";
 
 const routes: Routes = [
@@ -41,7 +41,7 @@ const routes: Routes = [
         path: ":id",
         component: CourseDetailComponent,
         children: [
-          { path: "signin/:type", component: ContactsListComponent },
+          { path: "signin/:type", component: ContactsManageComponent },
           { path: "signin/:type/:contactId", component: CourseSigninComponent }
         ]
       }

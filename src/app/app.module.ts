@@ -5,8 +5,8 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { ContactsComponent } from "./contacts/contacts.component";
-import { ContactsListComponent } from "./contacts/contacts-list/contacts-list.component";
-import { ContactsListItemComponent } from "./contacts/contacts-list/contacts-list-item/contacts-list-item.component";
+import { ContactsManageComponent } from "./contacts/contacts-manage/contacts-manage.component";
+import { ContactsListItemComponent } from "./contacts/contacts-manage/contacts-list-item/contacts-list-item.component";
 import { ContactDetailComponent } from "./contacts/contact-detail/contact-detail.component";
 import { ContactEditComponent } from "./contacts/contact-edit/contact-edit.component";
 import { ContactNotFoundComponent } from "./contacts/contact-not-found/contact-not-found.component";
@@ -38,7 +38,7 @@ import { SnackBarComponent } from "./other/snack-bar/snack-bar.component";
   declarations: [
     AppComponent,
     ContactsComponent,
-    ContactsListComponent,
+    ContactsManageComponent,
     ContactsListItemComponent,
     ContactDetailComponent,
     ContactEditComponent,
