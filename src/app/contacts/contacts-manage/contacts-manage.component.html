@@ -9,11 +9,6 @@
       >New contact</a
     >
 
-    <ul>
-      <app-contacts-list-item
-        *ngFor="let contact of contacts"
-        [contact]="contact"
-      ></app-contacts-list-item>
-    </ul>
+    <app-contacts-list></app-contacts-list>
   </mat-card-content>
 </mat-card>
