@@ -1,5 +1,5 @@
-<mat-card *ngIf="!deleteMode" class="card">
-  <form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
+<mat-card class="card">
+  <form *ngIf="!deleteMode" [formGroup]="courseForm" (ngSubmit)="onSubmit()">
     <mat-card-title
       >Edit course: {{ courseToEdit?.shortCourseName }}</mat-card-title
     >
@@ -39,13 +39,13 @@
 
     <mat-card-actions> </mat-card-actions>
   </form>
-</mat-card>
 
-<!-- component for deleting course on purpose nested in edit - component -->
-<!-- the reason is not to create separate route which could be accessed by mistake -->
-<app-course-delete
-  *ngIf="deleteMode"
-  [course]="courseToEdit"
-  (cancelDelete)="deleteMode = false"
->
-</app-course-delete>
+  <!-- component for deleting course on purpose nested in edit - component -->
+  <!-- the reason is not to create separate route which could be accessed by mistake -->
+  <app-course-delete
+    *ngIf="deleteMode"
+    [course]="courseToEdit"
+    (cancelDelete)="deleteMode = false"
+  >
+  </app-course-delete>
+</mat-card>
