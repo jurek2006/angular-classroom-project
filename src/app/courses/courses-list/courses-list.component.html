@@ -1,8 +1,19 @@
-<a [routerLink]="['new']" routerLinkActive="active">New course</a>
+<mat-card class="card">
+  <mat-card-title>Courses:</mat-card-title>
+  <mat-card-content>
+    <a
+      mat-raised-button
+      color="accent"
+      [routerLink]="['new']"
+      routerLinkActive="active"
+      >New course</a
+    >
 
-<ul>
-  <app-courses-list-item
-    *ngFor="let course of courses"
-    [course]="course"
-  ></app-courses-list-item>
-</ul>
+    <ul>
+      <app-courses-list-item
+        *ngFor="let course of courses"
+        [course]="course"
+      ></app-courses-list-item>
+    </ul>
+  </mat-card-content>
+</mat-card>
