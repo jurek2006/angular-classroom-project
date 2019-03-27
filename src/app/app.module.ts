@@ -34,6 +34,7 @@ import {
 } from "@angular/material/snack-bar";
 import { SnackBarComponent } from "./other/snack-bar/snack-bar.component";
 import { ContactsListComponent } from "./shared/contacts-list/contacts-list.component";
+import { CourseSigninPickContactComponent } from './courses/course-detail/course-signin/course-signin-pick-contact/course-signin-pick-contact.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { ContactsListComponent } from "./shared/contacts-list/contacts-list.comp
     TestComponent,
     CourseSigninComponent,
     SnackBarComponent,
-    ContactsListComponent
+    ContactsListComponent,
+    CourseSigninPickContactComponent
   ],
   imports: [
     BrowserModule,
