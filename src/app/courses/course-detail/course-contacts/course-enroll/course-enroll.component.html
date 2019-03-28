@@ -1,0 +1,5 @@
+<h3>Chose contacts to sign in as {{ type }}:</h3>
+<app-contacts-list
+  [contacts]="contacts"
+  (selectedContact)="onContactSelected($event)"
+></app-contacts-list>

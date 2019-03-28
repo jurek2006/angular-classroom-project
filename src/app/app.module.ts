@@ -23,6 +23,8 @@ import { CourseDeleteComponent } from "./courses/course-edit/course-delete/cours
 import { CourseContactsComponent } from "./courses/course-detail/course-contacts/course-contacts.component";
 import { TestComponent } from "./test/test.component";
 import { CourseSigninComponent } from "./courses/course-detail/course-signin/course-signin.component";
+import { ContactsListComponent } from "./shared/contacts-list/contacts-list.component";
+import { CourseSigninPickContactComponent } from "./courses/course-detail/course-signin/course-signin-pick-contact/course-signin-pick-contact.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatButtonModule } from "@angular/material/button";
@@ -33,8 +35,8 @@ import {
   MAT_SNACK_BAR_DEFAULT_OPTIONS
 } from "@angular/material/snack-bar";
 import { SnackBarComponent } from "./other/snack-bar/snack-bar.component";
-import { ContactsListComponent } from "./shared/contacts-list/contacts-list.component";
-import { CourseSigninPickContactComponent } from './courses/course-detail/course-signin/course-signin-pick-contact/course-signin-pick-contact.component';
+import { MatTabsModule } from "@angular/material/tabs";
+import { CourseEnrollComponent } from './courses/course-detail/course-contacts/course-enroll/course-enroll.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,8 @@ import { CourseSigninPickContactComponent } from './courses/course-detail/course
     CourseSigninComponent,
     SnackBarComponent,
     ContactsListComponent,
-    CourseSigninPickContactComponent
+    CourseSigninPickContactComponent,
+    CourseEnrollComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +74,8 @@ import { CourseSigninPickContactComponent } from './courses/course-detail/course
     MatButtonModule,
     MatCardModule,
     MatInputModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTabsModule
   ],
   providers: [
     { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 1500 } }

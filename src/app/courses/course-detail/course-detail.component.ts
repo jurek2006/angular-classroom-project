@@ -2,8 +2,6 @@ import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import { CoursesService } from "../courses.service";
 import { Course } from "src/app/shared/courses.model";
-import { Contact } from "src/app/shared/contact.model";
-import { ContactsService } from "src/app/contacts/contacts.service";
 import { Subscription } from "rxjs";
 
 @Component({
@@ -11,14 +9,13 @@ import { Subscription } from "rxjs";
   templateUrl: "./course-detail.component.html",
   styleUrls: ["./course-detail.component.css"]
 })
-export class CourseDetailComponent implements OnInit {
+export class CourseDetailComponent implements OnInit, OnDestroy {
   private course: Course;
   private id: string;
   private subscription: Subscription;
 
   constructor(
     private coursesService: CoursesService,
-    private contactsService: ContactsService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
@@ -34,10 +31,18 @@ export class CourseDetailComponent implements OnInit {
         });
       }
 
-      this.subscription = this.coursesService.courseChanged.subscribe(() => {
-        // when course was changed update its data
-        this.course = this.coursesService.getCourseById(this.id);
-      });
+      this.subscription = this.coursesService.courseChanged.subscribe(
+        (course: Course) => {
+          // when course was changed update its data to new value
+          this.course = course;
+        }
+      );
     });
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }

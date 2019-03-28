@@ -14,6 +14,7 @@ import { ContactsManageComponent } from "./contacts/contacts-manage/contacts-man
 import { CourseSigninComponent } from "./courses/course-detail/course-signin/course-signin.component";
 import { ContactsListComponent } from "./shared/contacts-list/contacts-list.component";
 import { CourseSigninPickContactComponent } from "./courses/course-detail/course-signin/course-signin-pick-contact/course-signin-pick-contact.component";
+import { CourseContactsComponent } from "./courses/course-detail/course-contacts/course-contacts.component";
 
 const routes: Routes = [
   {
@@ -43,8 +44,9 @@ const routes: Routes = [
         path: ":id",
         component: CourseDetailComponent,
         children: [
-          { path: "signin/:type", component: CourseSigninPickContactComponent },
-          { path: "signin/:type/:contactId", component: CourseSigninComponent }
+          { path: ":type", component: CourseContactsComponent }
+          // { path: "signin/:type", component: CourseSigninPickContactComponent },
+          // { path: "signin/:type/:contactId", component: CourseSigninComponent }
         ]
       }
     ]

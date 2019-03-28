@@ -163,7 +163,7 @@ export class CoursesService {
           ...foundCourse.signed[contactType],
           contactToSignIn
         ];
-        this.courseChanged.next();
+        this.courseChanged.next(foundCourse);
         this.messageService.showMessage(
           `${contactToSignIn.firstName} ${
             contactToSignIn.lastName

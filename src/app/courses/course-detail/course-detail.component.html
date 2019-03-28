@@ -5,17 +5,14 @@
   <mat-card-content>
     <a [routerLink]="['edit']" mat-raised-button color="primary">Edit course</a>
 
-    <app-course-contacts
-      type="teachers"
-      title="Teachers:"
-      [contacts]="course.signed"
-    ></app-course-contacts>
-    <app-course-contacts
-      type="students"
-      title="Students:"
-      [contacts]="course.signed"
-    ></app-course-contacts>
+    <nav mat-tab-nav-bar>
+      <a mat-tab-link routerLink="students">
+        Students
+      </a>
+      <a mat-tab-link routerLink="teachers">
+        Teachers
+      </a>
+    </nav>
+    <router-outlet></router-outlet>
   </mat-card-content>
 </mat-card>
-
-<router-outlet></router-outlet>

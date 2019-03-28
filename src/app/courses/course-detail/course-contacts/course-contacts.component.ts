@@ -1,29 +1,39 @@
-import { Component, OnInit, Input, OnChanges } from "@angular/core";
-import { Contact } from "src/app/shared/contact.model";
+import { Component, OnInit, Input, OnChanges, OnDestroy } from "@angular/core";
+import { ActivatedRoute, Params } from "@angular/router";
+import { CoursesService } from "../../courses.service";
+import { Course } from "src/app/shared/courses.model";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-course-contacts",
   templateUrl: "./course-contacts.component.html",
   styleUrls: ["./course-contacts.component.css"]
 })
-export class CourseContactsComponent implements OnInit, OnChanges {
-  @Input() type: string; // object contacts property name to get data
-  @Input() title: string;
-  @Input() contacts: Contact[];
+export class CourseContactsComponent implements OnInit, OnDestroy {
+  private id: string;
+  private type: string;
+  private course: Course;
+  private subscription: Subscription;
 
-  constructor() {}
+  constructor(
+    private route: ActivatedRoute,
+    private coursesService: CoursesService
+  ) {}
 
-  ngOnInit() {}
-  ngOnChanges() {
-    if (!this.contacts[this.type]) {
-      // if there is no proper property on object show warning
-      // (as template doesn't show because of ngIf statement)
-      console.warn(
-        `Not showing course '${this.type}' contacts. There is no property '${
-          this.type
-        }' on course.signed. See existing properties: `,
-        this.contacts
-      );
-    }
+  ngOnInit() {
+    this.route.params.subscribe((params: Params) => {
+      this.id = params.id;
+      this.type = params.type;
+      this.course = this.coursesService.getCourseById(this.id);
+    });
+    this.subscription = this.coursesService.courseChanged.subscribe(
+      (course: Course) => {
+        this.course = course;
+      }
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

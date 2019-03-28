@@ -9,6 +9,9 @@
       >New contact</a
     >
 
-    <app-contacts-list></app-contacts-list>
+    <app-contacts-list
+      [contacts]="contacts"
+      (selectedContact)="onContactSelected($event)"
+    ></app-contacts-list>
   </mat-card-content>
 </mat-card>

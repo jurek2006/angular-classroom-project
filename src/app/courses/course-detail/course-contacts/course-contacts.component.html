@@ -1,12 +1,15 @@
-<div *ngIf="contacts[type]">
+<div *ngIf="course.signed[type]">
   <!-- if there is no given property (i.e. teachers) on contacts object - not showing anything -->
-  <h3>{{ title }}</h3>
-  <a [routerLink]="['signin', type]">Sign in {{ type }} </a>
+  <a>Enroll {{ type }} </a>
+
+  <h3>Enrolled {{ type }}:</h3>
   <ul>
-    <li *ngFor="let contact of contacts[type]">
+    <li *ngFor="let contact of course.signed[type]">
       <a [routerLink]="'/contacts/' + contact.id"
         >{{ contact.firstName }} {{ contact.lastName }}</a
       >
     </li>
   </ul>
+
+  <app-course-enroll [type]="type" [course]="course"></app-course-enroll>
 </div>
