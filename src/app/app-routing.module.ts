@@ -10,10 +10,6 @@ import { CourseDetailComponent } from "./courses/course-detail/course-detail.com
 import { CourseNotFoundComponent } from "./courses/course-not-found/course-not-found.component";
 import { CourseEditComponent } from "./courses/course-edit/course-edit.component";
 import { TestComponent } from "./test/test.component";
-import { ContactsManageComponent } from "./contacts/contacts-manage/contacts-manage.component";
-import { CourseSigninComponent } from "./courses/course-detail/course-signin/course-signin.component";
-import { ContactsListComponent } from "./shared/contacts-list/contacts-list.component";
-import { CourseSigninPickContactComponent } from "./courses/course-detail/course-signin/course-signin-pick-contact/course-signin-pick-contact.component";
 import { CourseContactsComponent } from "./courses/course-detail/course-contacts/course-contacts.component";
 
 const routes: Routes = [
@@ -43,11 +39,7 @@ const routes: Routes = [
       {
         path: ":id",
         component: CourseDetailComponent,
-        children: [
-          { path: ":type", component: CourseContactsComponent }
-          // { path: "signin/:type", component: CourseSigninPickContactComponent },
-          // { path: "signin/:type/:contactId", component: CourseSigninComponent }
-        ]
+        children: [{ path: ":type", component: CourseContactsComponent }]
       }
     ]
   }

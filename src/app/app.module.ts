@@ -22,9 +22,7 @@ import { CourseDetailComponent } from "./courses/course-detail/course-detail.com
 import { CourseDeleteComponent } from "./courses/course-edit/course-delete/course-delete.component";
 import { CourseContactsComponent } from "./courses/course-detail/course-contacts/course-contacts.component";
 import { TestComponent } from "./test/test.component";
-import { CourseSigninComponent } from "./courses/course-detail/course-signin/course-signin.component";
 import { ContactsListComponent } from "./shared/contacts-list/contacts-list.component";
-import { CourseSigninPickContactComponent } from "./courses/course-detail/course-signin/course-signin-pick-contact/course-signin-pick-contact.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatButtonModule } from "@angular/material/button";
@@ -36,7 +34,7 @@ import {
 } from "@angular/material/snack-bar";
 import { SnackBarComponent } from "./other/snack-bar/snack-bar.component";
 import { MatTabsModule } from "@angular/material/tabs";
-import { CourseEnrollComponent } from './courses/course-detail/course-contacts/course-enroll/course-enroll.component';
+import { CourseEnrollComponent } from "./courses/course-detail/course-contacts/course-enroll/course-enroll.component";
 
 @NgModule({
   declarations: [
@@ -59,10 +57,8 @@ import { CourseEnrollComponent } from './courses/course-detail/course-contacts/c
     CourseDeleteComponent,
     CourseContactsComponent,
     TestComponent,
-    CourseSigninComponent,
     SnackBarComponent,
     ContactsListComponent,
-    CourseSigninPickContactComponent,
     CourseEnrollComponent
   ],
   imports: [
