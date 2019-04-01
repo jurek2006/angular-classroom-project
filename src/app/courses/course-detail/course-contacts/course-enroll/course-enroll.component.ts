@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { ContactsService } from "src/app/contacts/contacts.service";
 import { Contact } from "src/app/shared/contact.model";
-import { Router, ActivatedRoute } from "@angular/router";
 import { Course } from "src/app/shared/courses.model";
 import { CoursesService } from "src/app/courses/courses.service";
 
@@ -17,9 +16,7 @@ export class CourseEnrollComponent implements OnInit {
 
   constructor(
     private contactsService: ContactsService,
-    private courseService: CoursesService,
-    private router: Router,
-    private route: ActivatedRoute
+    private courseService: CoursesService
   ) {}
 
   ngOnInit() {
