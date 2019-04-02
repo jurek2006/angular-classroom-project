@@ -14,18 +14,10 @@ export class CoursesService {
 
   private courses: Course[] = [
     new Course(null, "English", "English for adults", {
-      teachers: [
-        this.contactsService.getContactById(
-          "2648eee6-2f9e-454a-934a-96fa5e3487be"
-        )
-      ],
+      teachers: ["2648eee6-2f9e-454a-934a-96fa5e3487be"],
       students: [
-        this.contactsService.getContactById(
-          "6f71d945-9518-4028-b27d-3f27efce1f87"
-        ),
-        this.contactsService.getContactById(
-          "0a8d68a0-1479-4121-8b5e-cf75d3e87c0c"
-        )
+        "6f71d945-9518-4028-b27d-3f27efce1f87",
+        "0a8d68a0-1479-4121-8b5e-cf75d3e87c0c"
       ]
     }),
     new Course(null, "Espanol", "Espanol para ninos"),
@@ -128,6 +120,7 @@ export class CoursesService {
     }
   }
 
+  /* Enrolls contact in course (in type defined in contactType) i.e. enroll in contact in course as a teacher/student */
   public signInContactToCourse(
     courseId: string,
     contactId: string,
@@ -141,17 +134,17 @@ export class CoursesService {
       // if there is property contactType in course.signed (e.g. teachers or students) to assign contact
 
       // contacts's data needed here for fail message (when contact already signed in)
-      const contactToSignIn = this.contactsService.getContactById(contactId);
+      const contactData = this.contactsService.getContactById(contactId);
 
       // check if contact have been already assigned to teachers/students for the course
       if (
-        foundCourse.signed[contactType].find(contact => {
-          return contact.id === contactId;
+        foundCourse.signed[contactType].find(enrolledContact => {
+          return enrolledContact === contactId;
         })
       ) {
         this.messageService.showMessage(
-          `${contactToSignIn.firstName} ${
-            contactToSignIn.lastName
+          `${contactData.firstName} ${
+            contactData.lastName
           } is already signed in to the course ${foundCourse.shortCourseName}`,
           "ok",
           "warning"
@@ -161,12 +154,12 @@ export class CoursesService {
         // if contact hasn't been assigned yet - sign in
         foundCourse.signed[contactType] = [
           ...foundCourse.signed[contactType],
-          contactToSignIn
+          contactId
         ];
         this.courseChanged.next(foundCourse);
         this.messageService.showMessage(
-          `${contactToSignIn.firstName} ${
-            contactToSignIn.lastName
+          `${contactData.firstName} ${
+            contactData.lastName
           } signed in to the course ${foundCourse.shortCourseName}`,
           "ok"
         );
