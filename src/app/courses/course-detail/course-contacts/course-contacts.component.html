@@ -4,11 +4,10 @@
 
   <h3>Enrolled {{ type }}:</h3>
   <ul>
-    <li *ngFor="let contact of course.signed[type]">
-      <a [routerLink]="'/contacts/' + contact"
-        >{{ contact }} {{ getContactData(contact).firstName }}
-        {{ contact.lastName }}</a
-      >
+    <li *ngFor="let contactId of course.signed[type]">
+      <a [routerLink]="'/contacts/' + contactId">
+        {{ contactId | showContact }}
+      </a>
     </li>
   </ul>
 

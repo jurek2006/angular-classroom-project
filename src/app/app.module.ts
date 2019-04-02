@@ -35,6 +35,7 @@ import {
 import { SnackBarComponent } from "./other/snack-bar/snack-bar.component";
 import { MatTabsModule } from "@angular/material/tabs";
 import { CourseEnrollComponent } from "./courses/course-detail/course-contacts/course-enroll/course-enroll.component";
+import { ShowContactPipe } from './contacts/show-contact.pipe';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { CourseEnrollComponent } from "./courses/course-detail/course-contacts/c
     TestComponent,
     SnackBarComponent,
     ContactsListComponent,
-    CourseEnrollComponent
+    CourseEnrollComponent,
+    ShowContactPipe
   ],
   imports: [
     BrowserModule,
