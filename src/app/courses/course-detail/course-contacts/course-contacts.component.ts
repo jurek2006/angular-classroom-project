@@ -35,7 +35,6 @@ export class CourseContactsComponent implements OnInit, OnDestroy {
         this.course = course;
       }
     );
-    console.log("course", this.course);
   }
 
   ngOnDestroy() {
