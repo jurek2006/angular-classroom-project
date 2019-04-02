@@ -7,9 +7,10 @@ export class Course {
     public shortCourseName: string,
     public fullCourseName: string,
     public signed: { teachers: uuid[]; students: uuid[] } = {
-      teachers: [],
-      students: []
-    }
+      students: [],
+      teachers: []
+    },
+    public defaultEnrolledType?: string
   ) {
     this.id = this.id || uuid();
   }

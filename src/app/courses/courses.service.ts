@@ -14,11 +14,11 @@ export class CoursesService {
 
   private courses: Course[] = [
     new Course(null, "English", "English for adults", {
-      teachers: ["2648eee6-2f9e-454a-934a-96fa5e3487be"],
       students: [
         "6f71d945-9518-4028-b27d-3f27efce1f87",
         "0a8d68a0-1479-4121-8b5e-cf75d3e87c0c"
-      ]
+      ],
+      teachers: ["2648eee6-2f9e-454a-934a-96fa5e3487be"]
     }),
     new Course(null, "Espanol", "Espanol para ninos"),
     new Course(null, "Deutsch", "Deutch DE")

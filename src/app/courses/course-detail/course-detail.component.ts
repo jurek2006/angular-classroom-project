@@ -2,17 +2,15 @@ import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import { CoursesService } from "../courses.service";
 import { Course } from "src/app/shared/courses.model";
-import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-course-detail",
   templateUrl: "./course-detail.component.html",
   styleUrls: ["./course-detail.component.css"]
 })
-export class CourseDetailComponent implements OnInit, OnDestroy {
+export class CourseDetailComponent implements OnInit {
   private course: Course;
   private id: string;
-  private subscription: Subscription;
 
   constructor(
     private coursesService: CoursesService,
@@ -31,18 +29,25 @@ export class CourseDetailComponent implements OnInit, OnDestroy {
         });
       }
 
-      this.subscription = this.coursesService.courseChanged.subscribe(
-        (course: Course) => {
-          // when course was changed update its data to new value
-          this.course = course;
-        }
-      );
-    });
-  }
+      if (this.course.signed && Object.keys(this.course.signed).length > 0) {
+        // if course has any type for contacts to enroll (i.e. students/teachers)
 
-  ngOnDestroy() {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
+        if (
+          this.course.defaultEnrolledType &&
+          this.course.signed[this.course.defaultEnrolledType]
+        ) {
+          // if there is defined defaultEnrolledType in the course and this type exists
+          // redirect to view with tab opened for this type
+          return this.router.navigate([this.course.defaultEnrolledType], {
+            relativeTo: this.route
+          });
+        } else {
+          // if there is not defined defaultEnrolledType or this property doesn't exist - redirect to first type
+          return this.router.navigate([Object.keys(this.course.signed)[0]], {
+            relativeTo: this.route
+          });
+        }
+      }
+    });
   }
 }
