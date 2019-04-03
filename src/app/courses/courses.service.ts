@@ -37,7 +37,7 @@ export class CoursesService {
 
   public getCourseById(id: string): Course {
     const foundCourse = this.courses.find((course: Course) => course.id === id);
-    return foundCourse ? JSON.parse(JSON.stringify(foundCourse)) : null;
+    return foundCourse ? foundCourse.getDeepCopy() : null;
   }
 
   public addCourse(shortCourseName: string, fullCourseName: string): Status {
