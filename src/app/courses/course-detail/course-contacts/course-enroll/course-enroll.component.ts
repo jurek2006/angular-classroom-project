@@ -25,7 +25,7 @@ export class CourseEnrollComponent implements OnInit {
 
   onContactSelected(selectedContact: Contact): void {
     // enrolls selectedContact to the course as type (i.e. student, teacher)
-    this.courseService.signInContactToCourse(
+    this.courseService.enrollContactInCourse(
       this.course.id,
       selectedContact.id,
       this.type

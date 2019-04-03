@@ -66,7 +66,7 @@ export class CoursesService {
                 id,
                 newShortCourseName,
                 newFullCourseName,
-                course.signed
+                course.enrolled
               )
             : course;
         }
@@ -122,8 +122,8 @@ export class CoursesService {
     }
   }
 
-  /* Enrolls contact in course (in type defined in contactType) i.e. enroll in contact in course as a teacher/student */
-  public signInContactToCourse(
+  /* Enrolls contact in course (in type defined in contactType) i.e. enroll contact in course as a teacher/student */
+  public enrollContactInCourse(
     courseId: string,
     contactId: string,
     contactType: string
@@ -132,37 +132,37 @@ export class CoursesService {
       (course: Course) => course.id === courseId
     );
 
-    if (foundCourse.signed[contactType]) {
-      // if there is property contactType in course.signed (e.g. teachers or students) to assign contact
+    if (foundCourse.enrolled[contactType]) {
+      // if there is property contactType in course.enrolled (e.g. teachers or students) to enroll contact
 
-      // contacts's data needed here for fail message (when contact already signed in)
+      // contacts's data needed here for fail message (when contact already enrolled)
       const contactData = this.contactsService.getContactById(contactId);
 
-      // check if contact have been already assigned to teachers/students for the course
+      // check if contact have been already enrolled to teachers/students for the course
       if (
-        foundCourse.signed[contactType].find(enrolledContact => {
+        foundCourse.enrolled[contactType].find(enrolledContact => {
           return enrolledContact === contactId;
         })
       ) {
         this.messageService.showMessage(
           `${contactData.firstName} ${
             contactData.lastName
-          } is already signed in to the course ${foundCourse.shortCourseName}`,
+          } is already enrolled in the course ${foundCourse.shortCourseName}`,
           "ok",
           "warning"
         );
         return { statusOk: false };
       } else {
-        // if contact hasn't been assigned yet - sign in
-        foundCourse.signed[contactType] = [
-          ...foundCourse.signed[contactType],
+        // if contact hasn't been enrolled yet - enroll
+        foundCourse.enrolled[contactType] = [
+          ...foundCourse.enrolled[contactType],
           contactId
         ];
         this.courseChanged.next(foundCourse);
         this.messageService.showMessage(
           `${contactData.firstName} ${
             contactData.lastName
-          } signed in to the course ${foundCourse.shortCourseName}`,
+          } enrolled in the course ${foundCourse.shortCourseName}`,
           "ok"
         );
         return {
@@ -172,12 +172,12 @@ export class CoursesService {
     } else {
       // error - there is no property contactType (i.e. students or teachers)
       console.error(
-        `There is no '${contactType}' type in course ${foundCourse} signed object. See existing properties: `,
-        foundCourse.signed
+        `There is no '${contactType}' type in course ${foundCourse}.enrolled object. See existing properties: `,
+        foundCourse.enrolled
       );
 
       this.messageService.showMessage(
-        `There is no '${contactType}' type in courses signin object`,
+        `There is no '${contactType}' type in courses enrolled object`,
         "ok",
         "error"
       );

@@ -30,15 +30,18 @@ export class CourseDetailComponent implements OnInit {
         });
       }
 
-      if (this.course.signed && Object.keys(this.course.signed).length > 0) {
+      if (
+        this.course.enrolled &&
+        Object.keys(this.course.enrolled).length > 0
+      ) {
         // if course has any type (of contacts to enroll - i.e. students/teachers)
 
         // generate array of course participant types (from course.enrolled property) - wich will be used in template to show tabs
-        this.enrolledTypesKeys = Object.keys(this.course.signed);
+        this.enrolledTypesKeys = Object.keys(this.course.enrolled);
 
         if (
           this.course.defaultEnrolledType &&
-          this.course.signed[this.course.defaultEnrolledType]
+          this.course.enrolled[this.course.defaultEnrolledType]
         ) {
           // if there is defined defaultEnrolledType in the course and this type exists
           // redirect to view with tab opened for this type
