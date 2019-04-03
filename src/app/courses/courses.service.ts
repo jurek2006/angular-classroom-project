@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Course } from "../shared/courses.model";
+import { Course } from "../shared/course.model";
 import { Subject } from "rxjs";
 import { ContactsService } from "../contacts/contacts.service";
 import { MessageService } from "../shared/message.service";

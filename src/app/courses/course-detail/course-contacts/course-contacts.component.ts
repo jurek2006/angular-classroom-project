@@ -2,7 +2,7 @@ import { Component, OnInit, Input, OnChanges, OnDestroy } from "@angular/core";
 import { ActivatedRoute, Params } from "@angular/router";
 import { v4 as uuid } from "uuid";
 import { CoursesService } from "../../courses.service";
-import { Course } from "src/app/shared/courses.model";
+import { Course } from "src/app/shared/course.model";
 import { Subscription } from "rxjs";
 import { Contact } from "src/app/shared/contact.model";
 import { ContactsService } from "src/app/contacts/contacts.service";

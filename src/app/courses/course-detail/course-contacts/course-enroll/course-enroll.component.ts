@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { ContactsService } from "src/app/contacts/contacts.service";
 import { Contact } from "src/app/shared/contact.model";
-import { Course } from "src/app/shared/courses.model";
+import { Course } from "src/app/shared/course.model";
 import { CoursesService } from "src/app/courses/courses.service";
 
 @Component({

@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { CoursesService } from "../courses.service";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { Course } from "src/app/shared/courses.model";
+import { Course } from "src/app/shared/course.model";
 
 @Component({
   selector: "app-course-edit",

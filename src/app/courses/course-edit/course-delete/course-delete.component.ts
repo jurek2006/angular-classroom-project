@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
-import { Course } from "src/app/shared/courses.model";
+import { Course } from "src/app/shared/course.model";
 import { CoursesService } from "../../courses.service";
 
 @Component({
