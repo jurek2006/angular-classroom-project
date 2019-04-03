@@ -11,6 +11,7 @@ import { Course } from "src/app/shared/courses.model";
 export class CourseDetailComponent implements OnInit {
   private course: Course;
   private id: string;
+  private enrolledTypesKeys: string[];
 
   constructor(
     private coursesService: CoursesService,
@@ -30,7 +31,10 @@ export class CourseDetailComponent implements OnInit {
       }
 
       if (this.course.signed && Object.keys(this.course.signed).length > 0) {
-        // if course has any type for contacts to enroll (i.e. students/teachers)
+        // if course has any type (of contacts to enroll - i.e. students/teachers)
+
+        // generate array of course participant types (from course.enrolled property) - wich will be used in template to show tabs
+        this.enrolledTypesKeys = Object.keys(this.course.signed);
 
         if (
           this.course.defaultEnrolledType &&
@@ -43,7 +47,7 @@ export class CourseDetailComponent implements OnInit {
           });
         } else {
           // if there is not defined defaultEnrolledType or this property doesn't exist - redirect to first type
-          return this.router.navigate([Object.keys(this.course.signed)[0]], {
+          return this.router.navigate([this.enrolledTypesKeys[0]], {
             relativeTo: this.route
           });
         }

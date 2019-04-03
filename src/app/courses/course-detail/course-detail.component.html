@@ -1,16 +1,19 @@
 <mat-card class="card" *ngIf="course">
   <mat-card-title
-    >{{ course.shortCourseName }} ({{ course.fullCourseName }})</mat-card-title
+    >{{ course.shortCourseName }} ({{ course.fullCourseName }})
+    <a [routerLink]="['edit']" mat-raised-button color="primary"
+      >Edit course</a
+    ></mat-card-title
   >
   <mat-card-content>
-    <a [routerLink]="['edit']" mat-raised-button color="primary">Edit course</a>
-
     <nav mat-tab-nav-bar>
-      <a mat-tab-link routerLink="students">
-        Students
-      </a>
-      <a mat-tab-link routerLink="teachers">
-        Teachers
+      <!-- show tab for each the course's participant type -->
+      <a
+        mat-tab-link
+        *ngFor="let type of enrolledTypesKeys"
+        [routerLink]="type"
+      >
+        {{ type }}
       </a>
     </nav>
     <router-outlet></router-outlet>

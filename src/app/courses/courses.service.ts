@@ -20,7 +20,9 @@ export class CoursesService {
       ],
       teachers: ["2648eee6-2f9e-454a-934a-96fa5e3487be"]
     }),
-    new Course(null, "Espanol", "Espanol para ninos"),
+    new Course(null, "Espanol", "Espanol para ninos", {
+      teachers: ["2648eee6-2f9e-454a-934a-96fa5e3487be"]
+    }),
     new Course(null, "Deutsch", "Deutch DE")
   ];
 
