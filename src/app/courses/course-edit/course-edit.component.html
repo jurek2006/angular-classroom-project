@@ -24,8 +24,15 @@
           matInput
         />
       </mat-form-field>
-      <div class=""></div>
-      <div class=""></div>
+
+      <div *ngIf="courseToEdit?.getEnrollTypes().length > 0">
+        <p>Contacts' types possible to enroll:</p>
+        <ul>
+          <li *ngFor="let type of courseToEdit.getEnrollTypes()">
+            {{ type }}
+          </li>
+        </ul>
+      </div>
     </mat-card-content>
     <button [disabled]="!courseForm.valid" mat-stroked-button>
       Save course
