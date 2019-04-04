@@ -30,6 +30,8 @@ export class CourseContactsComponent implements OnInit, OnDestroy {
       this.type = params.type;
       this.course = this.coursesService.getCourseById(this.id);
     });
+
+    // PROBABLY NOT NEEDED ANYMORE
     this.subscription = this.coursesService.courseChanged.subscribe(
       (course: Course) => {
         this.course = course;
@@ -39,9 +41,5 @@ export class CourseContactsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
-  }
-
-  public getContactData(id: uuid): Contact {
-    return this.contactsService.getContactById(id);
   }
 }

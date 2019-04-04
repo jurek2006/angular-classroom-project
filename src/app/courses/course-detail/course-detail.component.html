@@ -12,6 +12,9 @@
         mat-tab-link
         *ngFor="let type of course.enrollTypes"
         [routerLink]="type"
+        routerLinkActive
+        #rla="routerLinkActive"
+        [active]="rla.isActive"
       >
         {{ type }}
       </a>
