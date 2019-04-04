@@ -7,10 +7,10 @@
   >
   <mat-card-content>
     <nav mat-tab-nav-bar>
-      <!-- show tab for each the course's participant type -->
+      <!-- show tab for each the course's participant type (i.e. students, teachers) -->
       <a
         mat-tab-link
-        *ngFor="let type of enrolledTypesKeys"
+        *ngFor="let type of course.enrollTypes"
         [routerLink]="type"
       >
         {{ type }}

@@ -14,10 +14,6 @@ export class Course {
     this.id = this.id || uuid();
   }
 
-  public getEnrollTypes(): string[] {
-    return Object.keys(this.enrolled);
-  }
-
   get copy(): Course {
     // returns new Course object which is deep copy of this object
     return new Course(
@@ -27,5 +23,9 @@ export class Course {
       JSON.parse(JSON.stringify(this.enrolled)),
       this.defaultEnrolledType
     );
+  }
+
+  get enrollTypes(): string[] {
+    return Object.keys(this.enrolled);
   }
 }

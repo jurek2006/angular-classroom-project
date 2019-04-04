@@ -25,16 +25,13 @@
         />
       </mat-form-field>
 
-      <div
-        class="box disabled"
-        *ngIf="courseToEdit?.getEnrollTypes().length > 0"
-      >
+      <div class="box disabled" *ngIf="courseToEdit?.enrollTypes.length > 0">
         <h3>Contacts' types possible to enroll:</h3>
         <mat-chip-list>
           <mat-chip disabled>Not editable</mat-chip>
         </mat-chip-list>
         <mat-list>
-          <mat-list-item *ngFor="let type of courseToEdit.getEnrollTypes()">
+          <mat-list-item *ngFor="let type of courseToEdit.enrollTypes">
             <mat-icon matListIcon>perm_identity</mat-icon>
             {{ type }}
           </mat-list-item>
