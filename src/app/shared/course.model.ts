@@ -18,7 +18,8 @@ export class Course {
     return Object.keys(this.enrolled);
   }
 
-  public getDeepCopy(): Course {
+  get copy(): Course {
+    // returns new Course object which is deep copy of this object
     return new Course(
       JSON.parse(JSON.stringify(this.id)),
       this.shortCourseName,
