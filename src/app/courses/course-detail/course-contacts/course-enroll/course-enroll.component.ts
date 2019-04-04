@@ -12,6 +12,7 @@ import { CoursesService } from "src/app/courses/courses.service";
 export class CourseEnrollComponent implements OnInit {
   @Input() type: string;
   @Input() course: Course;
+  panelOpenState = false;
   private contacts: Contact[];
 
   constructor(

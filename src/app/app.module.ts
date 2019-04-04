@@ -31,6 +31,7 @@ import { MatInputModule } from "@angular/material/input";
 import { MatChipsModule } from "@angular/material/chips";
 import { MatListModule } from "@angular/material/list";
 import { MatIconModule } from "@angular/material/icon";
+import { MatExpansionModule } from "@angular/material/expansion";
 import {
   MatSnackBarModule,
   MAT_SNACK_BAR_DEFAULT_OPTIONS
@@ -79,7 +80,8 @@ import { ShowContactPipe } from "./contacts/show-contact.pipe";
     MatTabsModule,
     MatChipsModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    MatExpansionModule
   ],
   providers: [
     { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 1500 } }

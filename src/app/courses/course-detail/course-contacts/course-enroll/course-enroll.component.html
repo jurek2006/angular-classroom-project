@@ -1,5 +1,20 @@
-<h3>Chose contacts to enroll in course {{ type }}:</h3>
-<app-contacts-list
-  [contacts]="contacts"
-  (selectedContact)="onContactSelected($event)"
-></app-contacts-list>
+<mat-expansion-panel
+  (opened)="panelOpenState = true"
+  (closed)="panelOpenState = false"
+>
+  <mat-expansion-panel-header>
+    <mat-panel-title> Enroll {{ type }} </mat-panel-title>
+    <mat-panel-description>
+      {{
+        (panelOpenState
+          ? "Chose contacts below to enroll course "
+          : "Expand panel to enroll more ") + type
+      }}
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <app-contacts-list
+    [contacts]="contacts"
+    (selectedContact)="onContactSelected($event)"
+  ></app-contacts-list>
+</mat-expansion-panel>
