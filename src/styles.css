@@ -10,7 +10,8 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-.card {
+/* MAT CARD MODIFICATIONS */
+mat-card {
   margin: 1em;
 }
 

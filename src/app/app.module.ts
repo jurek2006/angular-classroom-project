@@ -28,6 +28,9 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
 import { MatInputModule } from "@angular/material/input";
+import { MatChipsModule } from "@angular/material/chips";
+import { MatListModule } from "@angular/material/list";
+import { MatIconModule } from "@angular/material/icon";
 import {
   MatSnackBarModule,
   MAT_SNACK_BAR_DEFAULT_OPTIONS
@@ -35,7 +38,7 @@ import {
 import { SnackBarComponent } from "./other/snack-bar/snack-bar.component";
 import { MatTabsModule } from "@angular/material/tabs";
 import { CourseEnrollComponent } from "./courses/course-detail/course-contacts/course-enroll/course-enroll.component";
-import { ShowContactPipe } from './contacts/show-contact.pipe';
+import { ShowContactPipe } from "./contacts/show-contact.pipe";
 
 @NgModule({
   declarations: [
@@ -73,7 +76,10 @@ import { ShowContactPipe } from './contacts/show-contact.pipe';
     MatCardModule,
     MatInputModule,
     MatSnackBarModule,
-    MatTabsModule
+    MatTabsModule,
+    MatChipsModule,
+    MatListModule,
+    MatIconModule
   ],
   providers: [
     { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 1500 } }

@@ -8,3 +8,11 @@ mat-form-field {
 button {
   margin-right: 0.5em;
 }
+
+div.box.disabled {
+  padding: 0 1em;
+  border: 1px solid #cccccc;
+  color: #666666;
+  background-color: #f3f3f3;
+  transform: scale(0.8);
+}
