@@ -7,6 +7,7 @@
       <a [routerLink]="'/contacts/' + contactId">
         {{ contactId | showContact }}
       </a>
+      <button mat-button (click)="onDisenroll(contactId)">disenroll</button>
     </li>
   </ul>
 

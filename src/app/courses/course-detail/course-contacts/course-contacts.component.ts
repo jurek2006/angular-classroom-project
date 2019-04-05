@@ -13,7 +13,7 @@ import { ContactsService } from "src/app/contacts/contacts.service";
   styleUrls: ["./course-contacts.component.css"]
 })
 export class CourseContactsComponent implements OnInit, OnDestroy {
-  private id: string;
+  private id: string; // course id
   private type: string;
   private course: Course;
   private subscription: Subscription;
@@ -41,5 +41,13 @@ export class CourseContactsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  public onDisenroll(contactId: uuid): void {
+    this.coursesService.disenrollContactFromCourse(
+      this.id,
+      contactId,
+      this.type
+    );
   }
 }

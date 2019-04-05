@@ -84,7 +84,7 @@ import { ShowContactPipe } from "./contacts/show-contact.pipe";
     MatExpansionModule
   ],
   providers: [
-    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 1500 } }
+    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 3000 } }
   ],
   bootstrap: [AppComponent]
 })

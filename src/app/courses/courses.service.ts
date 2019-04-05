@@ -135,25 +135,25 @@ export class CoursesService {
     }
   }
 
-  /* Enrolls contact in course (in type defined in contactType) i.e. enroll contact in course as a teacher/student */
+  /* Enrolls contact in course (in type defined in enrollType) i.e. enroll contact in course as a teacher/student */
   public enrollContactInCourse(
     courseId: string,
     contactId: string,
-    contactType: string
+    enrollType: string
   ): Status {
     const foundCourse = this.courses.find(
       (course: Course) => course.id === courseId
     );
 
-    if (foundCourse.enrolled[contactType]) {
-      // if there is property contactType in course.enrolled (e.g. teachers or students) to enroll contact
+    if (foundCourse.enrolled[enrollType]) {
+      // if there is property enrollType in course.enrolled (e.g. teachers or students) to enroll contact
 
-      // contacts's data needed here for fail message (when contact already enrolled)
+      // contacts's data needed here for messages (as enrolled item is only contact id)
       const contactData = this.contactsService.getContactById(contactId);
 
       // check if contact have been already enrolled to teachers/students for the course
       if (
-        foundCourse.enrolled[contactType].find(enrolledContact => {
+        foundCourse.enrolled[enrollType].find(enrolledContact => {
           return enrolledContact === contactId;
         })
       ) {
@@ -167,8 +167,8 @@ export class CoursesService {
         return { statusOk: false };
       } else {
         // if contact hasn't been enrolled yet - enroll
-        foundCourse.enrolled[contactType] = [
-          ...foundCourse.enrolled[contactType],
+        foundCourse.enrolled[enrollType] = [
+          ...foundCourse.enrolled[enrollType],
           contactId
         ];
         this.courseChanged.next(foundCourse);
@@ -183,14 +183,78 @@ export class CoursesService {
         };
       }
     } else {
-      // error - there is no property contactType (i.e. students or teachers)
+      // error - there is no property enrollType (i.e. students or teachers)
       console.error(
-        `There is no '${contactType}' type in course ${foundCourse}.enrolled object. See existing properties: `,
+        `There is no '${enrollType}' type in course ${foundCourse}.enrolled object. See existing properties: `,
         foundCourse.enrolled
       );
 
       this.messageService.showMessage(
-        `There is no '${contactType}' type in courses enrolled object`,
+        `There is no '${enrollType}' type in courses enrolled object`,
+        "ok",
+        "error"
+      );
+
+      return { statusOk: false };
+    }
+  }
+
+  public disenrollContactFromCourse(
+    courseId: string,
+    contactId: string,
+    enrollType: string
+  ): Status {
+    console.log(`Disenroll ${contactId} from ${courseId} type ${enrollType}`);
+
+    const foundCourse = this.courses.find(
+      (course: Course) => course.id === courseId
+    );
+
+    let ifDisenrolled = false; // flag contains status if contact was disentrolled (if it will get true - operation successfull)
+
+    // filter out contactId from enrolled[enrollType]
+    foundCourse.enrolled[enrollType] = foundCourse.enrolled[enrollType].filter(
+      (enrolledContact: uuid): uuid => {
+        if (enrolledContact === contactId) {
+          // found enrolledContact to get rid of
+          ifDisenrolled = true; // set flag - means disenrolled contact
+          return false;
+        } else {
+          return true;
+        }
+      }
+    );
+
+    // contacts's data needed here for messages (as enrolled item is only contact id)
+    const contactData = this.contactsService.getContactById(contactId);
+
+    if (ifDisenrolled) {
+      // when disenrolled - operation succeeded
+
+      this.courseChanged.next(foundCourse);
+      this.messageService.showMessage(
+        `${contactData.firstName} ${
+          contactData.lastName
+        } disenrolled from the course ${foundCourse.shortCourseName}`,
+        "ok"
+      );
+
+      return {
+        statusOk: true
+      };
+    } else {
+      // when not disenrolled anyone
+
+      console.error(
+        `Could not disenroll ${contactData.firstName} ${
+          contactData.lastName
+        } from course ${foundCourse.shortCourseName} - type ${enrollType}`
+      );
+
+      this.messageService.showMessage(
+        `Could not disenroll ${contactData.firstName} ${
+          contactData.lastName
+        } from course ${foundCourse.shortCourseName} - type ${enrollType}`,
         "ok",
         "error"
       );
