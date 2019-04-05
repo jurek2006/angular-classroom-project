@@ -214,7 +214,7 @@ export class CoursesService {
 
     // filter out contactId from enrolled[enrollType]
     foundCourse.enrolled[enrollType] = foundCourse.enrolled[enrollType].filter(
-      (enrolledContact: uuid): uuid => {
+      (enrolledContact: string): boolean => {
         if (enrolledContact === contactId) {
           // found enrolledContact to get rid of
           ifDisenrolled = true; // set flag - means disenrolled contact

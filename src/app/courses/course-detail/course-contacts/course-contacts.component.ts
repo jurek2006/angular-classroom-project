@@ -43,7 +43,7 @@ export class CourseContactsComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  public onDisenroll(contactId: uuid): void {
+  public onDisenroll(contactId: string): void {
     this.coursesService.disenrollContactFromCourse(
       this.id,
       contactId,

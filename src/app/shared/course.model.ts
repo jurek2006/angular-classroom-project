@@ -5,7 +5,7 @@ export class Course {
     public id: string,
     public shortCourseName: string,
     public fullCourseName: string,
-    public enrolled: { teachers?: uuid[]; students?: uuid[] } = {
+    public enrolled: { teachers?: string[]; students?: string[] } = {
       students: [],
       teachers: []
     },
