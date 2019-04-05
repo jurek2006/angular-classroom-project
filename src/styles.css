@@ -1,6 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @import "@angular/material/prebuilt-themes/deeppurple-amber.css";
 
+/* global font size */
+* {
+  font-size: 1.05em;
+}
+
 html,
 body {
   height: 100%;
@@ -15,6 +20,7 @@ mat-card {
   margin: 1em;
 }
 
+/* MAT SNACKBARS with different statuses */
 .snackbar-error {
   color: white;
   background: #cc3300;
@@ -33,4 +39,9 @@ mat-card {
 .snackbar-success {
   color: white;
   background: #339900;
+}
+
+/* MAT ICON BUTTON - add some bg color on hover */
+.mat-icon-button:hover {
+  background-color: #eeeeee;
 }

@@ -32,6 +32,7 @@ import { MatChipsModule } from "@angular/material/chips";
 import { MatListModule } from "@angular/material/list";
 import { MatIconModule } from "@angular/material/icon";
 import { MatExpansionModule } from "@angular/material/expansion";
+import { MatTooltipModule } from "@angular/material/tooltip";
 import {
   MatSnackBarModule,
   MAT_SNACK_BAR_DEFAULT_OPTIONS
@@ -40,6 +41,7 @@ import { SnackBarComponent } from "./other/snack-bar/snack-bar.component";
 import { MatTabsModule } from "@angular/material/tabs";
 import { CourseEnrollComponent } from "./courses/course-detail/course-contacts/course-enroll/course-enroll.component";
 import { ShowContactPipe } from "./contacts/show-contact.pipe";
+import "hammerjs";
 
 @NgModule({
   declarations: [
@@ -81,7 +83,8 @@ import { ShowContactPipe } from "./contacts/show-contact.pipe";
     MatChipsModule,
     MatListModule,
     MatIconModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatTooltipModule
   ],
   providers: [
     { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 3000 } }

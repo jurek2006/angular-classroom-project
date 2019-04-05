@@ -2,12 +2,28 @@
   <!-- if there is no given property (i.e. teachers) on contacts object - not showing anything -->
 
   <h3>Enrolled {{ type }}:</h3>
+
   <ul>
     <li *ngFor="let contactId of course.enrolled[type]">
-      <a [routerLink]="'/contacts/' + contactId">
-        {{ contactId | showContact }}
+      {{ contactId | showContact }}
+      <a
+        [routerLink]="'/contacts/' + contactId"
+        class="icon-button"
+        mat-icon-button
+        matTooltip="go to contact's details"
+        aria-label="Link to go to contact's detail view"
+      >
+        <mat-icon>person</mat-icon>
       </a>
-      <button mat-button (click)="onDisenroll(contactId)">disenroll</button>
+      <button
+        mat-icon-button
+        class="icon-button"
+        (click)="onDisenroll(contactId)"
+        matTooltip="disenroll from the course"
+        aria-label="Button to disenroll contact from the course"
+      >
+        <mat-icon>remove_circle_outline</mat-icon>
+      </button>
     </li>
   </ul>
 
