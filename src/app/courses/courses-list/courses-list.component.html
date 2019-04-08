@@ -10,11 +10,12 @@
     ></mat-card-title
   >
   <mat-card-content>
-    <ul>
-      <app-courses-list-item
-        *ngFor="let course of courses"
-        [course]="course"
-      ></app-courses-list-item>
+    <ul class="__choseList">
+      <li *ngFor="let course of courses">
+        <a mat-button [routerLink]="course.id" routerLinkActive="active"
+          >{{ course.shortCourseName }} ({{ course.fullCourseName }})</a
+        >
+      </li>
     </ul>
   </mat-card-content>
 </mat-card>

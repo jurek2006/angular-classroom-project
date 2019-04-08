@@ -1,0 +1,7 @@
+<ul class="__choseList">
+  <li *ngFor="let contact of contacts">
+    <a mat-button [routerLink]="contact.id" routerLinkActive="active"
+      >{{ contact.firstName }} {{ contact.lastName }}
+    </a>
+  </li>
+</ul>

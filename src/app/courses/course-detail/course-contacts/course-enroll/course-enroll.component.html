@@ -13,8 +13,11 @@
     </mat-panel-description>
   </mat-expansion-panel-header>
 
-  <app-contacts-list
-    [contacts]="contacts"
-    (selectedContact)="onContactSelected($event)"
-  ></app-contacts-list>
+  <ul>
+    <li *ngFor="let contact of contacts">
+      <button (click)="onContactSelected(contact)" mat-button>
+        {{ contact.firstName }} {{ contact.lastName }}
+      </button>
+    </li>
+  </ul>
 </mat-expansion-panel>

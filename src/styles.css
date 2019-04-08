@@ -45,3 +45,9 @@ mat-card {
 .mat-icon-button:hover {
   background-color: #eeeeee;
 }
+
+/* LIST */
+.__choseList .mat-button.active {
+  color: red;
+  background-color: #eeeeee;
+}

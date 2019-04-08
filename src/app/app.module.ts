@@ -6,7 +6,6 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { ContactsComponent } from "./contacts/contacts.component";
 import { ContactsManageComponent } from "./contacts/contacts-manage/contacts-manage.component";
-import { ContactsListItemComponent } from "./shared/contacts-list/contacts-list-item/contacts-list-item.component";
 import { ContactDetailComponent } from "./contacts/contact-detail/contact-detail.component";
 import { ContactEditComponent } from "./contacts/contact-edit/contact-edit.component";
 import { ContactNotFoundComponent } from "./contacts/contact-not-found/contact-not-found.component";
@@ -21,8 +20,9 @@ import { CourseNotFoundComponent } from "./courses/course-not-found/course-not-f
 import { CourseDetailComponent } from "./courses/course-detail/course-detail.component";
 import { CourseDeleteComponent } from "./courses/course-edit/course-delete/course-delete.component";
 import { CourseContactsComponent } from "./courses/course-detail/course-contacts/course-contacts.component";
+import { CourseEnrollComponent } from "./courses/course-detail/course-contacts/course-enroll/course-enroll.component";
 import { TestComponent } from "./test/test.component";
-import { ContactsListComponent } from "./shared/contacts-list/contacts-list.component";
+import { ContactsListComponent } from "./contacts/contacts-manage/contacts-list/contacts-list.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatButtonModule } from "@angular/material/button";
@@ -39,7 +39,6 @@ import {
 } from "@angular/material/snack-bar";
 import { SnackBarComponent } from "./other/snack-bar/snack-bar.component";
 import { MatTabsModule } from "@angular/material/tabs";
-import { CourseEnrollComponent } from "./courses/course-detail/course-contacts/course-enroll/course-enroll.component";
 import { ShowContactPipe } from "./contacts/show-contact.pipe";
 import "hammerjs";
 
@@ -48,7 +47,6 @@ import "hammerjs";
     AppComponent,
     ContactsComponent,
     ContactsManageComponent,
-    ContactsListItemComponent,
     ContactDetailComponent,
     ContactEditComponent,
     ContactNotFoundComponent,
