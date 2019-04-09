@@ -1,6 +1,7 @@
 <mat-card class="card">
-  <mat-card-title>Contacts:</mat-card-title>
-  <mat-card-content>
+  <mat-card-title
+    ><h1>Contacts:</h1>
+
     <a
       mat-raised-button
       color="accent"
@@ -8,7 +9,8 @@
       routerLinkActive="active"
       >New contact</a
     >
-
+  </mat-card-title>
+  <mat-card-content>
     <app-contacts-list
       [contacts]="contacts"
       (selectedContact)="onContactSelected($event)"

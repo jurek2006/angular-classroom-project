@@ -15,9 +15,29 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+/* LAYOUT */
+.__layout-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.__layout-sidebar {
+  flex: 0 0 auto;
+}
+
+.__layout-content {
+  flex: 1 0 auto;
+}
+
 /* MAT CARD MODIFICATIONS */
 mat-card {
   margin: 1em;
+}
+
+mat-card-title {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* MAT SNACKBARS with different statuses */
