@@ -1,8 +1,29 @@
 <mat-card class="card">
   <form *ngIf="!deleteMode" [formGroup]="courseForm" (ngSubmit)="onSubmit()">
-    <mat-card-title
-      >Edit course: {{ courseToEdit?.shortCourseName }}</mat-card-title
-    >
+    <mat-card-title>
+      <div *ngIf="editMode; then editCourseView; else newCourseView">
+        <!-- only used to render conditionaly ng-template -->
+      </div>
+      <ng-template #editCourseView>
+        <h2>Edit course: {{ courseToEdit?.shortCourseName }}</h2>
+        <button
+          type="button"
+          (click)="onDeleteCourse()"
+          mat-stroked-button
+          class="btn-danger"
+        >
+          <i class="material-icons">
+            delete
+          </i>
+          Delete course
+        </button>
+      </ng-template>
+
+      <ng-template #newCourseView>
+        <h2>Add new course</h2>
+      </ng-template>
+    </mat-card-title>
+
     <mat-card-content>
       <mat-form-field>
         <mat-label>Short course name:</mat-label>
@@ -38,17 +59,22 @@
         </mat-list>
       </div>
     </mat-card-content>
-    <button [disabled]="!courseForm.valid" mat-stroked-button>
-      Save course
-    </button>
-    <button type="button" (click)="onCancel()" mat-stroked-button>
-      Cancel
-    </button>
-    <button type="button" (click)="onDeleteCourse()" mat-stroked-button>
-      Delete course
-    </button>
 
-    <mat-card-actions> </mat-card-actions>
+    <mat-card-actions>
+      <button type="button" (click)="onCancel()" mat-stroked-button>
+        <i class="material-icons"> cancel </i> Cancel
+      </button>
+      <button
+        [disabled]="!courseForm.valid"
+        mat-stroked-button
+        class="btn-success"
+      >
+        <i class="material-icons">
+          check_circle
+        </i>
+        Save course
+      </button>
+    </mat-card-actions>
   </form>
 
   <!-- component for deleting course on purpose nested in edit - component -->
