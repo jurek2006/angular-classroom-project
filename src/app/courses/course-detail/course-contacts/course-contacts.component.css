@@ -1,8 +1,7 @@
-ul {
-  /* list-style: none; */
-  /* padding-left: 0; */
-}
-
 .mat-icon-button {
   transform: scale(0.8);
+}
+
+p {
+  margin: 1.5em 0;
 }

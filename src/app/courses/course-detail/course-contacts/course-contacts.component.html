@@ -3,7 +3,7 @@
 
   <h3>Enrolled {{ type }}:</h3>
 
-  <ul>
+  <ul *ngIf="course.enrolled[type].length > 0; else noOneEnrolled">
     <li *ngFor="let contactId of course.enrolled[type]">
       {{ contactId | showContact }}
       <a
@@ -26,6 +26,10 @@
       </button>
     </li>
   </ul>
+
+  <ng-template #noOneEnrolled>
+    <p>No {{ type }} enrolled yet.</p>
+  </ng-template>
 
   <app-course-enroll [type]="type" [course]="course"></app-course-enroll>
 </div>
