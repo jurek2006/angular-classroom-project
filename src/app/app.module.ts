@@ -36,7 +36,6 @@ import {
   MatSnackBarModule,
   MAT_SNACK_BAR_DEFAULT_OPTIONS
 } from "@angular/material/snack-bar";
-import { SnackBarComponent } from "./other/snack-bar/snack-bar.component";
 import { MatTabsModule } from "@angular/material/tabs";
 import { ShowContactPipe } from "./contacts/show-contact.pipe";
 import "hammerjs";
@@ -60,7 +59,6 @@ import "hammerjs";
     CourseDeleteComponent,
     CourseContactsComponent,
     TestComponent,
-    SnackBarComponent,
     ContactsListComponent,
     CourseEnrollComponent,
     ShowContactPipe
