@@ -1,8 +1,11 @@
 <mat-card class="card" *ngIf="course">
-  <mat-card-title
-    >{{ course.shortCourseName }} ({{ course.fullCourseName }})
-    <a [routerLink]="['edit']" mat-raised-button color="primary"
-      >Edit course</a
+  <mat-card-title>
+    <h2>{{ course.shortCourseName }} ({{ course.fullCourseName }})</h2>
+    <a [routerLink]="['edit']" mat-stroked-button color="primary"
+      ><i class="material-icons">
+        edit
+      </i>
+      Edit course</a
     ></mat-card-title
   >
   <mat-card-content>

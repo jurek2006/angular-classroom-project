@@ -1,6 +1,11 @@
 <mat-card class="card" *ngIf="contact">
-  <mat-card-title
-    >{{ contact.firstName }} {{ contact.lastName }}</mat-card-title
-  >
-  <a mat-raised-button color="primary" [routerLink]="['edit']">Edit</a>
+  <mat-card-title>
+    <h2>{{ contact.firstName }} {{ contact.lastName }}</h2>
+    <a mat-stroked-button color="primary" [routerLink]="['edit']"
+      ><i class="material-icons">
+        edit
+      </i>
+      Edit contact</a
+    >
+  </mat-card-title>
 </mat-card>
