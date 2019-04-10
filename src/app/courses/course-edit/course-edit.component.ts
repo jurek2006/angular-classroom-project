@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { CoursesService } from "../courses.service";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { Course } from "src/app/shared/course.model";
+import { DialogService } from "src/app/dialog/dialog.service";
 
 @Component({
   selector: "app-course-edit",
@@ -18,7 +19,8 @@ export class CourseEditComponent implements OnInit {
   constructor(
     private coursesService: CoursesService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dialogService: DialogService
   ) {}
 
   ngOnInit() {
@@ -71,6 +73,23 @@ export class CourseEditComponent implements OnInit {
   }
 
   onDeleteCourse() {
-    this.deleteMode = true;
+    this.dialogService.openDialog({
+      header: "Confirm course deletion",
+      message: `Do you really want to delete the course ${
+        this.courseToEdit.shortCourseName
+      } (${this.courseToEdit.fullCourseName})?`,
+      buttons: [
+        {
+          text: "No"
+        },
+        {
+          text: "Yes",
+          callback: () => {
+            this.coursesService.deleteCourseById(this.courseToEdit.id);
+            this.router.navigate(["../.."], { relativeTo: this.route });
+          }
+        }
+      ]
+    });
   }
 }

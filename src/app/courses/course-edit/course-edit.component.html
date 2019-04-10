@@ -1,5 +1,5 @@
 <mat-card class="card">
-  <form *ngIf="!deleteMode" [formGroup]="courseForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
     <mat-card-title>
       <div *ngIf="editMode; then editCourseView; else newCourseView">
         <!-- only used to render conditionaly ng-template -->
@@ -76,13 +76,4 @@
       </button>
     </mat-card-actions>
   </form>
-
-  <!-- component for deleting course on purpose nested in edit - component -->
-  <!-- the reason is not to create separate route which could be accessed by mistake -->
-  <app-course-delete
-    *ngIf="deleteMode"
-    [course]="courseToEdit"
-    (cancelDelete)="deleteMode = false"
-  >
-  </app-course-delete>
 </mat-card>

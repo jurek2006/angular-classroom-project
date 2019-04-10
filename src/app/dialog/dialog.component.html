@@ -1,0 +1,24 @@
+<h1 *ngIf="data.header" mat-dialog-title>{{ data.header }}</h1>
+<div mat-dialog-content>
+  <p>{{ data.message }}</p>
+</div>
+
+<div mat-dialog-actions *ngIf="data.buttons && data.buttons.length > 0">
+  <!-- if buttons given show them -->
+  <!-- when button clicted - returns it's callback (if given) -->
+  <!-- if callback not given - button just closes dialog -->
+  <button
+    *ngFor="let button of data.buttons"
+    mat-button
+    [mat-dialog-close]="button.callback"
+  >
+    {{ button.text }}
+  </button>
+</div>
+
+<!-- if buttons not given - shows default "ok" which just closes the dialog if clicked -->
+<div mat-dialog-actions *ngIf="!data.buttons || data.buttons.length === 0">
+  <button mat-button [mat-dialog-close]="">
+    Ok
+  </button>
+</div>

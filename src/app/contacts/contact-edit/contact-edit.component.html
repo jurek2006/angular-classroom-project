@@ -27,7 +27,8 @@
     </ng-template>
   </mat-card-title>
 
-  <form *ngIf="!deleteMode" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+  <!-- <form *ngIf="!deleteMode" [formGroup]="contactForm" (ngSubmit)="onSubmit()"> -->
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
     <mat-card-content>
       <mat-form-field>
         <mat-label>First name:</mat-label>
@@ -68,12 +69,4 @@
       </button>
     </mat-card-actions>
   </form>
-
-  <!-- component for deleting contact on purpose nested in edit - component -->
-  <!-- the reason is not to create separate route which could be accessed by mistake -->
-  <app-contact-delete
-    *ngIf="deleteMode"
-    [contact]="contactToEdit"
-    (cancelDelete)="deleteMode = false"
-  ></app-contact-delete>
 </mat-card>

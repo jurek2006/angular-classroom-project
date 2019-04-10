@@ -4,6 +4,7 @@ import { Contact } from "src/app/shared/contact.model";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { Router, ActivatedRoute } from "@angular/router";
 import { MatSnackBar } from "@angular/material";
+import { DialogService } from "src/app/dialog/dialog.service";
 
 @Component({
   selector: "app-contact-edit",
@@ -20,7 +21,8 @@ export class ContactEditComponent implements OnInit {
     private contactsService: ContactsService,
     private router: Router,
     private route: ActivatedRoute,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private dialogService: DialogService
   ) {}
 
   ngOnInit() {
@@ -85,6 +87,23 @@ export class ContactEditComponent implements OnInit {
   }
 
   onDeleteContact() {
-    this.deleteMode = true;
+    this.dialogService.openDialog({
+      header: "Confirm contact deletion",
+      message: `Do you really want to delete the contact ${
+        this.contactToEdit.firstName
+      } ${this.contactToEdit.lastName}?`,
+      buttons: [
+        {
+          text: "No"
+        },
+        {
+          text: "Yes",
+          callback: () => {
+            this.contactsService.deleteContactById(this.contactToEdit.id);
+            this.router.navigate(["../.."], { relativeTo: this.route });
+          }
+        }
+      ]
+    });
   }
 }

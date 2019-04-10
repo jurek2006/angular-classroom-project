@@ -9,7 +9,6 @@ import { ContactsManageComponent } from "./contacts/contacts-manage/contacts-man
 import { ContactDetailComponent } from "./contacts/contact-detail/contact-detail.component";
 import { ContactEditComponent } from "./contacts/contact-edit/contact-edit.component";
 import { ContactNotFoundComponent } from "./contacts/contact-not-found/contact-not-found.component";
-import { ContactDeleteComponent } from "./contacts/contact-edit/contact-delete/contact-delete.component";
 import { CoursesComponent } from "./courses/courses.component";
 import { CoursesListComponent } from "./courses/courses-list/courses-list.component";
 import { HeaderComponent } from "./header/header.component";
@@ -17,7 +16,6 @@ import { IndexComponent } from "./index/index.component";
 import { CourseEditComponent } from "./courses/course-edit/course-edit.component";
 import { CourseNotFoundComponent } from "./courses/course-not-found/course-not-found.component";
 import { CourseDetailComponent } from "./courses/course-detail/course-detail.component";
-import { CourseDeleteComponent } from "./courses/course-edit/course-delete/course-delete.component";
 import { CourseContactsComponent } from "./courses/course-detail/course-contacts/course-contacts.component";
 import { CourseEnrollComponent } from "./courses/course-detail/course-contacts/course-enroll/course-enroll.component";
 import { TestComponent } from "./test/test.component";
@@ -32,6 +30,7 @@ import { MatListModule } from "@angular/material/list";
 import { MatIconModule } from "@angular/material/icon";
 import { MatExpansionModule } from "@angular/material/expansion";
 import { MatTooltipModule } from "@angular/material/tooltip";
+import { MatDialogModule } from "@angular/material/dialog";
 import {
   MatSnackBarModule,
   MAT_SNACK_BAR_DEFAULT_OPTIONS
@@ -39,6 +38,7 @@ import {
 import { MatTabsModule } from "@angular/material/tabs";
 import { ShowContactPipe } from "./contacts/show-contact.pipe";
 import "hammerjs";
+import { DialogComponent } from "./dialog/dialog.component";
 
 @NgModule({
   declarations: [
@@ -48,7 +48,6 @@ import "hammerjs";
     ContactDetailComponent,
     ContactEditComponent,
     ContactNotFoundComponent,
-    ContactDeleteComponent,
     CoursesComponent,
     CoursesListComponent,
     HeaderComponent,
@@ -56,12 +55,12 @@ import "hammerjs";
     CourseEditComponent,
     CourseNotFoundComponent,
     CourseDetailComponent,
-    CourseDeleteComponent,
     CourseContactsComponent,
     TestComponent,
     ContactsListComponent,
     CourseEnrollComponent,
-    ShowContactPipe
+    ShowContactPipe,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -78,8 +77,10 @@ import "hammerjs";
     MatListModule,
     MatIconModule,
     MatExpansionModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDialogModule
   ],
+  entryComponents: [DialogComponent],
   providers: [
     { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 3000 } }
   ],
